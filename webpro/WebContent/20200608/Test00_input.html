@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form 연습1</title>
+</head>
+<body>
+	<form action="Test01_get.jsp" method="get">
+		이름 : <input type="text" name="name" value="abc"><br> <!-- value는 초기값, 자바의 변수와 같은 개념이라고 보면 될듯 -->
+		주소 : <input type="text" name="addr" value="대전"><br>
+		<input type="submit" value="get전송">
+	</form>
+	<hr>
+	<form action="Test02_post.jsp" method="post">
+		아이디 : <input type="text" name="id"><br>
+		비밀번호 : <input type="password" name="pw"><br>
+		<input type="submit" value="post전송">
+	</form>
+	<hr>
+	<form action="input_type.jsp" method="post">
+		이메일 : <input type="email" name="email"><br> 
+		URL : <input type="url" name="url"><br> 
+		전화번호 : <input type="text"name="tel"><br> 
+		색상 : <input type="color" name="color"><br> 
+		월 : <input type="month" name="month"><br> 
+		날짜 : <input type="date" name="date"><br> 
+		주 : <input type="week" name="week"><br>
+		시간 : <input type="time" name="time"><br>
+		지역 시간 : <input type="datetime-local" name="localdatetime"><br>
+		숫자 : <input type="number" name="number" min="1" max="10" step="2"><br>
+		범위 : <input type="range" name="range" min="1" max="10" step="2"><br> 
+		<input type="submit" value="제출">
+	</form>
+	
+</body>
+</html>

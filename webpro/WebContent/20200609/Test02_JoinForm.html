@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JoinForm</title>
+<style type="text/css">
+	h2, form{
+		width : 40%;
+		height : auto;
+		padding : 20px;
+		border : 2px solid blue;
+		margin : 20px auto;
+	}
+	h2{
+		border : none;
+		text-align: center;
+	}
+	label{
+		display: inline-block;
+		width: 100px;
+		height: 25px;		
+	}
+</style>
+</head>
+<body>
+	<h2>회원 가입 화면</h2>
+	<div>
+	<form action="">
+		<label>이름</label>
+		<input type="text" name="name"><br>
+	
+		<label>주소</label>
+			<input type="text" name="addr"><br>
+
+		<label>이메일</label>
+			<input type="password" name="pW"><br>
+		
+		<input type="radio" name="gender" id="male" value="male">
+		<label for="male">male</label><br>
+		
+    	<input type="radio" name="gender" id="female" value="female">
+    	<label for="female">female</label><br>
+    		
+    	
+    	<input type="submit" value="send">
+    	<input type="reset" value="원래대로">
+	</form>
+	</div>
+</body>
+</html>

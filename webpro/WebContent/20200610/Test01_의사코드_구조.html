@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>의사코드_구조</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	table{
+		border : 1px solid blue;
+		/* border-spacing : 10px; ==> 선 사이의 간격 */
+		border-collapse : collapse; /* ==> 선 사이의 간격을 없앰(기본 default값은 seporate) */
+	
+		/* 
+			border-width : 1px;
+			border-style : solid;
+			border-color : blue;
+			==> border : 1px solid blue; 와 같음
+		*/
+	}
+	#tab1 tr:nth-child(2n-1){
+		background : lightblue;
+	}
+	#tab1 tr:nth-child(2n){
+		background : lightgreen;
+	}
+	#tab2 td:nth-child(2n){
+		background : pink;
+	}
+	#tab2 td:nth-child(2n-1){
+		background : lightblue;
+	}
+	td{
+		width : 200px;
+		height : 40px;
+		text-align : center;
+		padding : 5px;
+	}
+</style>
+</head>
+<body>
+<pre>
+<strong>
+의사 클래스(pseudo-class, 가상클래스)
+	- 클래스가 정의된 것처럼 간주
+	- 특별한 상태나 구조에 따라 선택 
+	- :으로 사용
+	- 상태 : link, :visited, :hover, :active
+	- 구조 : :nth-child(1), :nth-child(2), :nth-child(2n) => 괄호 안의 숫자는 몇번째 자식인가를 나타내고 2n은 2의 배수 번째 자식을 나타냄
+</strong> 
+</pre>
+<pre>
+<strong>
+#tab1 tr:nth-child(2n-1){
+	background : lightblue;
+}
+#tab1 tr:nth-child(2n){
+	background : lightgreen;
+}
+</strong>
+</pre>
+	<table id="tab1" border="1">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+		</tr>
+	</table>
+<pre>
+<strong>
+#tab2 td:nth-child(2n){
+	background : pink;
+}
+#tab2 td:nth-child(2n-1){
+	background : lightblue;
+}
+</strong>
+</pre>
+	<table id="tab2" border="1">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+		</tr>
+	</table>
+
+</body>
+</html>

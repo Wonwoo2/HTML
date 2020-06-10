@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../CSS/myCSS.css" type="text/css"> 
+<title>Form 연습2</title>
+<style>
+	
+	img{
+		width : 100px;
+		height : 100px;
+	}
+	#inputimg{
+		width : 50px;
+		height : 50px;
+	}
+</style>
+<script>
+	function aa() {
+		//window.alert("Hello");
+		let userName = document.ff.name.value;
+		let userId = document.ff.id.value;
+		let color = document.ff.color.value;
+		
+		// window.alert("색상 : " + color)
+		
+		//.body의 id이름을 이용한 접근
+		let by = document.getElementById('body');
+		// 배경색을 바꾸기
+		by.style.backgroudColor = color;
+		// window.alert("이름 : " + userName + "\n아이디 :" + userId);
+		
+	}
+</script>
+</head>
+<body id="body">
+<pre>
+<strong>
+form input의 type
+text, password, radio, checkbox, file,
+image, submit, reset, button
+
+전송을 실행하는 요소 :
+	type='image'
+	type='submit'
+	
+	type='button' : 아무런 기능이 없다, 기능을 부여하기 위해서 함수를 정의하고 호출한다.
+함수 정의 : function aa()
+함수 호출 : type='button' onclick=aa'()' 
+스크립트에서 html body태그 안에서 요소로 접근하기
+1. name을 이용해서 접근 / 입력된 값을 가져오기
+document.ff.name.value(값 가져오는 것)
+document.ff.id.value(값 가져오는 것)
+2. id이름으로 접근
+document.getElementById('id이름')
+</strong>
+</pre>
+	<form name="ff" action="test04_input_type.jsp" method="post">
+		이름 <input type="text" name="name"><br>
+		아이디 <input type="text" name="id"><br>
+		비밀번호 <input type="password" name="pw"><br>
+		주소 <input type="text" name="addr"><br>
+		전화번호 <input type="text" name="tel"><br>
+		성별 남자<input type="radio" name="gender" value="m">
+			여자<input type="radio" name="gender" value="f"><br>
+		좋아하는 음식<br>
+		<input type="checkbox" name="food" value="돈까스">돈까스<br>
+		<input type="checkbox" name="food" value="해물찜">해물찜<br>
+		<input type="checkbox" name="food" value="킹크랩">킹크랩<br>
+		<input type="checkbox" name="food" value="대게">대게<br>
+		<input type="checkbox" name="food" value="삼겹살">삼겹살<br>
+		색상 : <input type="color" name="color"> <br>
+		파일 <input type="file" name="file"><br>
+		<input type="hidden" name="hidden" value="001">
+		이미지<br><img src="../images/대나무숲.jpg">
+		<br><br>
+		<input id="inputimg" type="image" src="../images/단풍.jpg">
+		
+		전송하기(전송을 실행 type:"image" type="submit")<br>
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+		<input type="button" value="확인" onclick="aa()">
+	</form>
+
+</body>
+</html>
