@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>조건문IF</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	
+	function proc1(){
+		first = parseInt(prompt("첫 번째 수"));
+		second = parseInt(prompt("두 번째 수"));
+		operation = prompt("연산자");
+		
+		if(operation == "+") {
+			res = first + second;
+		} else if(operation == "-") {
+			res = first - second;
+		} else if(operation == "*") {
+			res = first * second;
+		} else if(operation == "/") {
+			res = first / second;
+		}
+		
+		str = "첫번째 수 : " + first + "<br>";
+		str += "두번째 수 : " + second + "<br>";
+		str += "연산자 : " + operation + "<br>";
+		
+		 
+		str += first + " " + operation + " " + second + " = " + res;
+		
+		document.getElementById('result').innerHTML = str;
+		
+	}
+	function proc2(){
+		first = parseInt(prompt("첫 번째 수"));
+		second = parseInt(prompt("두 번째 수"));
+		operation = prompt("연산자");
+		
+		switch(operation) {
+		case "+" :
+			res = first + second;
+			break;
+		case "-" :
+			res = first - second;
+			break;
+		case "*" :
+			res = first * second;
+			break;
+		case "/" :
+			res = first / second;
+			break;
+		}
+		
+		str = "첫번째 수 : " + first + "<br>";
+		str += "두번째 수 : " + second + "<br>";
+		str += "연산자 : " + operation + "<br>";
+		
+		str += first + " " + operation + " " + second + " = " + res;
+		
+		document.getElementById('result2').innerHTML = str;
+	}
+	
+	function proc3(){
+		score = prompt("점수 입력 >> ", "0 ~ 100 사이");
+		
+		if(score >= 90) {
+			res = "A";
+		} else if(score >= 80) {
+			res = "B";
+		} else if(score >= 70) {
+			res = "C";
+		} else if(score >= 60) {
+			res = "D";
+		} else {
+			res = "F";
+		}
+		
+		str = "입력 점수 : " + score + "<br>"
+		str += "결과 : " + res;
+		
+		document.getElementById('result3').innerHTML = str;
+	}
+	
+	function proc4(){
+		score = prompt("점수 입력 >> ", "0 ~ 100 사이");
+		
+		switch(parseInt(score/10)) {
+		case 10, 9 :
+			res = "A";
+			break;
+		case 8 :
+			res = "B";
+			break;
+		case 7 :
+			res = "C";
+			break;
+		case 6 :
+			res = "D";
+			break;
+		default :
+			res = "F";
+			break;
+		}
+		
+		str = "입력 점수 : " + score + "<br>"
+		str += "결과 : " + res;
+		
+		document.getElementById('result4').innerHTML = str;
+	}
+	
+	function proc5(){
+		first = prompt("첫 번째 사람", "가위바위보");
+		second = prompt("두 번째 사람", "가위바위보");
+		
+		if(first == second) {
+			res = " 비겼습니다.";
+		} else if(first == "가위" && second == "보" || 
+				first == "바위" && second == "가위" || 
+				first == "보" && second == "바위") {
+			res = "첫 번째 사람이 이겼습니다.";
+		} else {
+			res = "두 번째 사람이 이겼습니다.";
+		}
+		
+		str = "첫 번째 사람 " + first + "<br>";
+		str += "두 번째 사람 " + second + "<br>";
+		str += "결과 " + res + "<br>";
+		document.getElementById('result5').innerHTML = str;
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>IF Test</h2>
+		두 개의 수와 하나의 연산자를 입력(prompt)하여 연산은 수행하는 프로그램<br>
+		입력 : prompt <br>
+		출력 : div <br>
+		
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result"></div>
+	</div>
+	
+	<div class="box">
+		<h2>switch Test</h2>
+		두 개의 수와 하나의 연산자를 입력(prompt)하여 연산은 수행하는 프로그램<br>
+		입력 : prompt <br>
+		출력 : div <br>
+		
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+	
+	<div class="box">
+		<h2>IF 조건문 학점 구하기</h2>
+		0 ~ 100 사이의 수를 입력하여 학점 구하기<br>
+		입력 : prompt <br>
+		출력 : div <br>
+		
+		<input type="button" value="확인" onclick="proc3()">
+		<div id="result3"></div>
+	</div>
+	
+	<div class="box">
+		<h2>SWITCH문 학점 구하기</h2>
+		0 ~ 100 사이의 수를 입력하여 학점 구하기<br>
+		입력 : prompt <br>
+		출력 : div <br>
+		
+		<input type="button" value="확인" onclick="proc4()">
+		<div id="result4"></div>
+	</div>
+	
+	<div class="box">
+		<h2>if 가위바위보</h2>
+		두 사람의 가위바위보를 입력하여 승자 구하기<br>
+		입력 : prompt <br>
+		출력 : div <br>
+		
+		<input type="button" value="확인" onclick="proc5()">
+		<div id="result5"></div>
+	</div>
+	
+</body>
+</html>

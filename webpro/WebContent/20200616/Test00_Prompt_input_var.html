@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Prompt_Input_var</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	#result{
+		font-size: 1.2em;
+	}
+</style>
+
+<script type="text/javascript">
+	function proc(){
+		let x = prompt("첫번째 수 입력")
+		let y = prompt("두번째 수 입력")
+		let res = parseInt(x) + parseInt(y)
+		resId = document.getElementById('result');
+		print(x, y, res, 1)
+
+	}
+	function inputproc(){
+		let x = document.querySelector('#ix').value;	// ==> input 태그는 value로 값을 가져온다.
+		let y = document.querySelector('#iy').value;
+		let res = parseInt(x) + parseInt(y)
+		
+		resId = document.getElementById('sum');
+		print(x, y, res, 2)
+	}
+	function print(x, y, res, type){
+		str = x + " + " + y + " = " + res
+		
+		if(type == 1) {
+			resId.innerHTML = str;
+		} else {
+			resId.value = str;
+		}
+	}
+	
+</script>
+</head>
+<body>
+<pre>
+<strong>
+버튼을 클릭하면 두 개의 수를 입력하여 더하기를 한다.
+
+script에서 body요소에 접근하는 방법
+document.getElementById('id이름')
+document.querySelector('#id이름')
+
+변수 선언시 let 또는 var를 쓰면 지역변수가 된다.
+지역변수는 다른 함수에서 사용하기 위해서는 값을 넘겨주고
+함수에서는 매개변수로 받는다.
+print(x, y, res);
+function print(x, y, res){ }
+</strong>
+</pre>
+	<input type="button" value="확인" onclick="proc()">
+	<button type="button" onclick="proc()">확인</button>
+	<br>
+	<div>
+		<h1>결과</h1>
+		document.getElementById('result').innerHTML = 결과값;
+		<div id="result"></div>
+	</div>
+	<div>
+		x : <input id="ix" type="text"><br>
+		y : <input id="iy" type="text"><br>
+		<input type="button" value="확인" onclick="inputproc()">
+	</div>
+	<div>
+		<h1>결과</h1>
+		document.getElementById('sum').value = 결과값;
+		<input type="text" id="sum">
+	</div>
+	
+</body>
+</html>

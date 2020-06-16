@@ -104,29 +104,41 @@
 		height: 100%;
 	}
 </style>
+<script type="text/javascript">
+	function msg(list) {
+		if(list == 1) {
+			alert("홈이닭");
+		} else if(list == 2) {
+			alert("재밌게 쇼핑하랏");
+		} else if(list == 3) {
+			alert("소식 궁금해? 안알려줘");
+		} else if(list == 4) {
+			alert("계정 궁금해? 안알려줘");
+		} else {
+			alert("지금은 연결을 해줄 수가 없어!");
+		}
+	}
+</script>
 </head>
 <body>
-	<header><h2>Web Shopping</h2></header>
+	<header><h2>Com Shopping</h2></header>
 	<nav>
 		<ul id="ul1">
-			<li><a onclick="" target="ifr" href="main.html">HOME</a></li>
-			<li><a onclick="" target="ifr" href="shopping.html">SHOPPING ABOUT</a></li>
-			<li><a onclick="" target="ifr" href="news.html">NEWS</a></li>
-			<li><a onclick="" target="ifr" href="myAccount.html">MY ACCOUNT</a></li>
-			<li><a onclick="" target="ifr" href="contacts.html">CONTACTS</a></li>
+			<li onclick="msg(1)">HOME</li>
+			<li onclick="msg(2)">SHOPPING ABOUT</li>
+			<li onclick="msg(3)">NEWS</li>
+			<li onclick="msg(4)">MY ACCOUNT</li>
+			<li onclick="msg(5)">CONTACTS</li>
 		</ul>
 	</nav>
 	
 	<aside id="left">
 		<h2>카테고리</h2>
 		<ul id="ul2">
-			<li><a onclick="" target="ifr" href="computer.html">컴퓨터</a></li>
-			<li><a onclick="" target="ifr" href="의류.html">의류</a></li>
-			<li><a onclick="" target="ifr" href="음악.html">음악</a></li>
-			<li><a onclick="" target="ifr" href="영화.html">영화</a></li>
-			<li><a onclick="" target="ifr" href="스포츠/레저.html">스포츠/레저</a></li>
-			<li><a onclick="" target="ifr" href="가구/인테리어.html">가구/인테리어</a></li>
-			<li><a onclick="" target="ifr" href="식품.html">식품</a></li>
+			<li><a onclick="" target="ifr" href="computer.html">데스크탑</a></li>
+			<li><a onclick="" target="ifr" href="notebook.html">노트북</a></li>
+			<li><a onclick="" target="ifr" href="monitor.html">모니터</a></li>
+			<li><a onclick="" target="ifr" href="peripheral.html">주변기기</a></li>
 		</ul>
 	</aside>
 	<section>
@@ -136,7 +148,7 @@
 		<div id="cart">
 			<h3>Shopping Cart</h3>
 			현재 쇼핑카트에 물품이 없습니다.<br>
-			<a href="" id="showCart">쇼핑카트 보기</a>
+			<a href="cart.html" id="showCart">쇼핑카트 보기</a>
 		</div>
 		<div id="log">
 			<h3>LogIn</h3>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>반복문</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		sum = 0;
+		for (var i = 1; i <= 10; i ++) {
+			sum += i;
+		}
+		str = "1부터 10까지의 합 : " + sum
+		document.getElementById('result1').innerHTML = str;
+	}
+	function proc2() {
+		sum = 0;
+		/* for (i = 2; i <= 100; i += 2) {
+			sum += i;
+		} */
+		
+		for (i = 1; i <= 100; i++) {
+			if(i % 2 != 0) {
+				continue;	
+			}
+			sum += i;
+		}
+		str = "1부터 100까지 짝수의 합 : " + sum
+		document.getElementById('result2').innerHTML = str;
+	}
+	function proc3() {
+		sum = 0;
+		while(true) {
+			number = parseInt(prompt("수 입력", "종료 : 0"));
+			if(number == 0) {
+				break;
+			}
+			sum += number;
+		}
+		
+		str = "누적된 수의 합 : " + sum
+		document.getElementById('result3').innerHTML = str;
+	}
+	
+</script>
+</head>
+<body>
+<pre>
+<strong>
+변수 선언
+1. var : 함수 영역에서 사용 가능
+2. let : 선언된 위치의 블록 내에서만 사용 가능
+for
+while
+do-while
+</strong>
+</pre>
+	<div class="box">
+		<h2>1.문제 1 ~ 10 합 구하기</h2>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>2.문제 1 ~ 100 짝수합 구하기</h2>
+		continue 사용
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>3.문제 입력한 값 더하기</h2>
+		prompt 사용, 입력 수를 누적<br>
+		0을 입력하면 종료한다.
+		<input type="button" value="확인" onclick="proc3()">
+		<div id="result3"></div>
+	</div>
+
+</body>
+</html>

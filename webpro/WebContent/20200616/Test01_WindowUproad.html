@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WindowUproad</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	h1{
+		color: red;
+	}
+</style>
+<script type="text/javascript">
+	
+	window.onload = function() {
+		hlist = document.getElementsByTagName('h1')[0];
+		hlist.style.color = "green";
+	}
+	
+	function colorChange() {
+		cr = parseInt(Math.random()*256);
+		cg = parseInt(Math.random()*256);
+		cb = parseInt(Math.random()*256);
+		hlist.style.color = "rgb(" + cr + "," + cg + "," + cb + ")";
+	}
+	
+</script>
+</head>
+<body>
+<pre>
+<strong>
+실행하자마자 h1태그에 접근해서 글자색을 바꾼다.
+style에서 코딩
+scrpit에서 코딩 - 태그요소에 접근
+window.onload = function() {
+	hlist = document.getElementsByTagName('h1')[0];
+	hlist.style.color = "blue";
+}
+버튼을 클릭 할때마다 글자색을 랜덤으로 바꾼다.
+</strong>
+</pre>
+<h1>무궁화 꽃이 피었습니다.~</h1>
+<br>
+<button type="button" onclick="colorChange()">확인</button>
+
+</body>
+</html>

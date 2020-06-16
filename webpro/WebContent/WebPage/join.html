@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JoinForm</title>
+<style type="text/css">
+	h2, form{
+		width : 40%;
+		height : auto;
+		padding : 20px;
+		border : 2px solid red;
+		margin : 20px auto;
+	}
+	h2{
+		border : none;
+		text-align: center;
+	}
+	label{
+		display: inline-block;
+		width: 100px;
+		height: 25px;		
+	}
+	.input1{
+		margin-left: 50px;
+	}
+	.label1{
+		margin-left: 50px;
+	}
+</style>
+</head>
+<body>
+	<h2>회원 가입</h2>
+	<div>
+	<form action="">
+		<label>아이디</label>
+		<input type="text" name="id">
+		<input id="chk" type="button" value="중복검사"><br>
+	
+		<label>패스워드</label>
+			<input type="password" name="pw"><br>
+		<label>패스워드</label>
+			<input type="password" name="pw2"><br>
+
+		<label>이름</label>
+			<input type="text" name="name"><br>
+		<label>휴대폰 번호</label>
+			<input type="text" name="tel"><br>
+		<label>이메일</label>
+			<input type="text" name="mail"><br>
+		
+		<input class="input1" type="radio" name="gender" id="male" value="male">
+		<label class="label1" for="male">남성</label><br>
+		
+    	<input class="input1" type="radio" name="gender" id="female" value="female">
+    	<label class="label1" for="female">여성</label><br>
+    		
+    	
+    	<input  type="submit" value="가입하기">
+    	<input type="reset" value="초기화">
+	</form>
+	</div>
+</body>
+</html>
