@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>수평 리스트</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	ul{
+		width : 80%;
+		padding : 30px;
+		border-top : 3px solid red;
+		border-bottom : 3px solid red;
+		margin : 20px auto;
+	}
+	li{
+		list-style-type : none;
+		margin : 15px;
+		width : 100px;
+		display : inline; /* block inline-block */
+		padding : 20px;
+		letter-spacing : 10px;
+	}
+	iframe{
+		width : 90%;
+		height : 500px;
+		margin-left : 100px;
+	}
+	a:link{
+		color : green;
+		text-decoration: none;
+	}
+	a:visited{
+		color : orange;
+	}
+	a:hover{
+		color : lime;
+		background : pink;
+	}
+	a:active{
+		color : purple
+	}
+	.hh{
+		display : none;
+		/* visibility : hidden; */
+	}
+</style>
+<script type="text/javascript">
+	function disp_pro(t, str) {
+		/* window.alert(t); */
+		/* alert(t.textContent); */
+		str = t.textContent;
+		let val;
+		switch(str) {
+		case "아메리카노" : 
+			val = document.getElementById("c1");
+			val.style.display = "block";
+			document.getElementById("c2").style.display = "none";
+			document.getElementById("c3").style.display = "none";
+			document.getElementById("c4").style.display = "none";
+			break;
+		case "카페라떼" : 
+			val = document.getElementById("c2");
+			val.style.display = "block";
+			document.getElementById("c1").style.display = "none";
+			document.getElementById("c3").style.display = "none";
+			document.getElementById("c4").style.display = "none";
+			break;
+		case "카푸치노" : 
+			val = document.getElementById("c3");
+			val.style.display = "block";
+			document.getElementById("c1").style.display = "none";
+			document.getElementById("c2").style.display = "none";
+			document.getElementById("c4").style.display = "none";
+			break;
+		case "에스프레소" : 
+			val = document.getElementById("c4");
+			document.getElementById("c1").style.display = "none";
+			document.getElementById("c2").style.display = "none";
+			document.getElementById("c3").style.display = "none";
+			val.style.display = "block";
+			break;
+		}
+	}
+
+</script>
+</head>
+<body>
+<h1>Coffee shop</h1>
+<h1 class="hh" id="c1">Hello ~~ 아메리카노</h1>
+<h1 class="hh" id="c2">Hello ~~ 카페라떼</h1>
+<h1 class="hh" id="c3">Hello ~~ 카푸치노</h1>
+<h1 class="hh" id="c4">Hello ~~ 에스프레소</h1>
+	<ul>
+		<li><a onclick="disp_pro(this)" target="ifr" href="../아메리카노.html">아메리카노</a></li>
+		<li><a onclick="disp_pro(this)" target="ifr" href="../카페라떼.html">카페라떼</a></li>
+		<li><a onclick="disp_pro(this)" target="ifr" href="../카푸치노.html">카푸치노</a></li>
+		<li><a onclick="disp_pro(this)" target="ifr" href="../에스프레소.html">에스프레소</a></li>
+	</ul>
+	<br>
+	<br>
+	<iframe src="../아메리카노.html" name="ifr"></iframe>
+</body>
+</html>

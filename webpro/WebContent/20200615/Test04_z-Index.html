@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Z-Index</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	div{
+		width: 150px;
+		height: 100px;
+		position: absolute;
+	}
+	#d1{
+		background: yellow;
+		top: 300px
+	}
+	#d2{
+		background: lightblue;
+		top : 320px;
+	}
+	#d3{
+		background: pink;
+		top: 325px;
+		z-index: 10;
+	}
+	#d4{
+		background: lightgreen;
+		top: 330px;
+	}
+</style>
+</head>
+<body>
+<pre>
+<strong>
+z-index : 여러 개의 요소들이 겹쳐 있을 때 보여지는 요소를 지정, 0이 기준이고 위로 올라올수록 z-index 값이 커짐
+</strong>
+</pre>
+	<div id="d1">
+		#d1
+	</div>
+	
+	<div id="d2">
+		#d2
+	</div>
+	
+	<div id="d3">
+		#d3
+	</div>
+	
+	<div id="d4">
+		#d4
+	</div>
+</body>
+</html>

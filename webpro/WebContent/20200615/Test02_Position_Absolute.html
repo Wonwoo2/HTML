@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Absolute Position</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	div{
+		width: 150px;
+		height: 100px;
+	}
+	#d1{
+		background: yellow;
+	}
+	#d2{
+		background: lightblue;
+		position: absolute;
+		top : 500px;
+		left : 400px;
+	}
+	#d3{
+		background: pink;
+	}
+	#d4{
+		background: lightgreen;
+	}
+</style>
+</head>
+<body>
+<pre>
+<strong>
+위치설정
+absolue : 윈도우의 원점을 기준으로 재배치
+top, bottom, left, right의 위치를 지정
+#d2{
+	background: lightblue;
+	position: absolute;
+	top : 500px;
+	left : 400px;
+}
+</strong>
+</pre>
+	<div id="d1">
+		#d1
+	</div>
+	
+	<div id="d2">
+		#d2
+	</div>
+	
+	<div id="d3">
+		#d3
+	</div>
+	
+	<div id="d4">
+		#d4
+	</div>
+</body>
+</html>

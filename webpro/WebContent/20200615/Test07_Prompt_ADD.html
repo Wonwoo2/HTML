@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Prompt함수2</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	#result{
+		font-size: 1.2em;
+	}
+</style>
+
+<script type="text/javascript">
+	function proc(){
+		let x = prompt("첫번째 수 입력")
+		let y = prompt("두번째 수 입력")
+		let res = parseInt(x) + parseInt(y)
+		// alert(res)
+		
+		str = x + " + " + y + " = " + res
+		// vid = document.getElementById('result');	==> div요소의 id로 접근한 경우
+		vid = document.querySelector('#result');
+		vid.innerHTML = str;
+	}
+	function inputproc(){
+		let x = document.querySelector('#ix').value;	// ==> input 태그는 value로 값을 가져온다.
+		let y = document.querySelector('#iy').value;
+		let res = parseInt(x) + parseInt(y)
+		
+		str = x + " + " + y + " = " + res
+		vid = document.querySelector('#result');
+		vid.innerHTML = str;
+	}
+</script>
+</head>
+<body>
+<pre>
+<strong>
+버튼을 클릭하면 두 개의 수를 입력하여 더하기를 한다.
+
+script에서 body요소에 접근하는 방법
+document.getElementById('id이름')
+document.querySelector('#id이름')
+
+document.getElementsClassName('class이름')
+document.querySelector('.클래스이름')
+
+document.getElementsBytagName('input')
+</strong>
+</pre>
+	<input type="button" value="확인" onclick="proc()">
+	<button type="button" onclick="proc()">확인</button>
+	<br>
+	
+	<div>
+		x : <input id="ix" type="text"><br>
+		y : <input id="iy" type="text"><br>
+		<input type="button" value="확인" onclick="inputproc()">
+	</div>
+	
+	<div>
+		<h1>결과</h1>
+		<div id="result"></div>
+	</div>
+</body>
+</html>
