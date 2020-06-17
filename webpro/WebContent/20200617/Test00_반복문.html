@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>반복문</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		dan = prompt("단 입력");
+		res = "";
+		for (i = 1; i <= 9; i ++) {
+			res += dan + " * " + i + " = " + dan * i + "<br>";
+		}
+	
+		str = dan + "단<br>" + res
+		document.getElementById('result1').innerHTML = str;
+	}
+	function proc2ㄴ() {
+		res = "";
+		for (k = 0; k < 3; k ++) {
+			dan = prompt("단 입력");
+			res += "<br>======" + dan + "단======<br>"
+			for (i = 1; i <= 9; i++) {
+				res += dan + " * " + i + " = " + dan * i + "<br>";
+			}
+		}
+		document.getElementById('result2').innerHTML = res;
+	}
+	function proc3() {
+		res = "";
+		for (k = 0; ; ) {
+			dan = prompt("단 입력");
+			if(dan == 0 || dan == null) {
+				break;
+			}
+			res += "<br>======" + dan + "단======<br>"
+			for (i = 1; i <= 9; i++) {
+				res += dan + " * " + i + " = " + dan * i + "<br>";
+			}
+		}
+		document.getElementById('result3').innerHTML = res;
+	}
+	function proc4() {
+		res = "";
+		for (k = 0; ; ) {
+			dan = prompt("단 입력");
+			yn = confirm("계속 할래?? (y/n)");
+			if(!yn) {
+				break;
+			}
+			res += "<br>======" + dan + "단======<br>"
+			for (i = 1; i <= 9; i++) {
+				res += dan + " * " + i + " = " + dan * i + "<br>";
+			}
+		}
+		document.getElementById('result4').innerHTML = res;
+	}
+	function proc5() {	// window.load가 없을 시에는 console.log까지는 실행됨.
+		res = "";
+		for (i = 1; i <= 10; i++) {
+			for (k = 1; k <= 10; k++) {
+				if((i + k) % 3 != 0) {
+					break;
+				}
+				res += "i = " + i + " k = " + k + "\n";
+			}
+		}
+		alert(res);
+		console.log(res);
+		document.querySelector('#result5').innerHTML = res;
+	}
+	window.onload = function() {
+		res = "";
+		for (i = 1; i <= 10; i++) {
+			for (k = 1; k <= 10; k++) {
+				if((i + k) % 3 != 0) {
+					break;
+				}
+				res += "i = " + i + " k = " + k + "\n";
+			}
+		}
+		// alert(res);
+		console.log(res);
+		document.querySelector('#result5').innerHTML = res;
+	}
+</script>
+</head>
+<body>
+<pre>
+<strong>
+변수 선언
+1. var : 함수 영역에서 사용 가능하다.
+2. let : 선언된 위치의 블록 내에서만 사용 가능하다.
+3. const : 변수의 값을 변경할 수 없다.
+for
+while
+do-while
+
+버튼 없이 실행하기
+- 실행하자마자 결과를 출력
+window.onload = function() {
+	로직 기술
+	document.querySelector('#result8')
+}
+
+</strong>
+</pre>
+	<div class="box">
+		<h2>1.문제 입력한 수의 구구단 구하기</h2>
+		prompt 사용<br>
+		결과 출력<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>2.문제 3번의 수를 입력하여 입력한 수의 구구단 구하기</h2>
+		prompt 사용<br>
+		결과 출력<br>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>3.문제 다중 반복문을 이용하여 입력한 수의 구구단 구하기</h2>
+		prompt 사용<br>
+		입력 횟수는 정해지지 않았음<br>
+		0을 입력하면 종료, 취소버튼(null값을 리턴)을 클릭하면 종료 <br>
+		<input type="button" value="확인" onclick="proc3()">
+		<div id="result3"></div>
+	</div>
+	<div class="box">
+		<h2>4.문제 입력한 수의 구구단 구하기</h2>
+		prompt 사용<br>
+		입력 횟수는 정해지지 않았음<br>
+		계속 여부 (Y/N)? 에 의해서 종료<br>
+		confirm() : true/false를 리턴하는 내장함수<br>
+		<input type="button" value="확인" onclick="proc4()">
+		<div id="result4"></div>
+	</div>
+	<div class="box">
+		<h2>5.문제 3의 배수의 합 구하기</h2>
+		다음 for문을 이용해서 1 ~ 10까지 중 <br>
+		i와 k의 더한 합이 3의 배수일 때만 출력<br>
+		continue 이용<br>
+<!-- 		<input type="button" value="확인" onclick="proc5()"> -->
+		<div id="result5"></div>
+	</div>
+	<!-- <script type="text/javascript">
+	function proc8() {
+		res = "";
+		for (i = 1; i <= 10; i++) {
+			for (k = 1; k <= 10; k++) {
+				if((i + k) % 3 != 0) {
+					break;
+				}
+				res += "i = " + i + " k = " + k + "\n";
+			}
+		}
+		alert(res);
+		console.log(res);
+		document.getElementById('result8').innerHTML = res;
+	}
+	</script> -->
+</body>
+</html>

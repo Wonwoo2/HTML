@@ -17,9 +17,6 @@
 	}
 	function proc2() {
 		sum = 0;
-		/* for (i = 2; i <= 100; i += 2) {
-			sum += i;
-		} */
 		
 		for (i = 1; i <= 100; i++) {
 			if(i % 2 != 0) {
@@ -32,26 +29,29 @@
 	}
 	function proc3() {
 		sum = 0;
+		res = ""; 
 		while(true) {
 			number = parseInt(prompt("수 입력", "종료 : 0"));
 			if(number == 0) {
 				break;
 			}
 			sum += number;
+			res += number + " ";
 		}
 		
-		str = "누적된 수의 합 : " + sum
+		str = "누적된 수의 합 : " + sum + "<br>"
+		str += "입력 값 : " + res
 		document.getElementById('result3').innerHTML = str;
 	}
-	
 </script>
 </head>
 <body>
 <pre>
 <strong>
 변수 선언
-1. var : 함수 영역에서 사용 가능
-2. let : 선언된 위치의 블록 내에서만 사용 가능
+1. var : 함수 영역에서 사용 가능하다.
+2. let : 선언된 위치의 블록 내에서만 사용 가능하다.
+3. const : 변수의 값을 변경할 수 없다.
 for
 while
 do-while
@@ -75,6 +75,7 @@ do-while
 		<input type="button" value="확인" onclick="proc3()">
 		<div id="result3"></div>
 	</div>
+	
 
 </body>
 </html>

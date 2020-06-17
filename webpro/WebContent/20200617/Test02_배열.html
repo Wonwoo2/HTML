@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	
+	function proc1() {
+		let fruits = ["사과", "바나나", "복숭아", "파인애플", "광고", "수박"];
+		let res = document.getElementById('result1');
+		display(fruits, res);
+	}
+	function proc2() {
+		let fruits = new Array("딸기", "참외", "복숭아", "자두", "자몽", "메론");
+		let res = document.getElementById('result2');
+		display(fruits, res);
+	}
+	function proc3() {
+		let fruits = new Array();
+		fruits[0] = "사과";
+		fruits[1] = "바나나";
+		fruits[2] = "오렌지";
+		fruits[3] = "포도";
+		
+		let res = document.getElementById('result3');
+		display(fruits, res);
+	}
+	function proc4() {
+		let fruits = new Array();
+		fruits[0] = "사과";
+		fruits[1] = "바나나";
+		fruits[2] = "오렌지";
+		fruits[3] = "포도";
+		
+		let res = document.getElementById('result3');
+		display(fruits, res);
+	}	
+	function display(fruits, value) {
+		value.innerHTML = fruits;
+		res = "<br>";
+		for (i = 0; i < fruits.length; i ++) {
+			res += i + "번째 값 : " + fruits[i] + "<br>";
+		}
+		value.innerHTML += res;
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>배열1</h2>
+		리터럴 생성<br>
+		fruits = ["사과", "바나나", "복숭아", "파인애플", "광고", "수박"];<br>
+		<input type="button" value="확인" onclick="proc1()"><br>
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>배열2</h2>
+		Array객체로 생성<br>
+		let fruits = new Array("딸기", "참외", "복숭아", "자두", "자몽", "메론");<br>
+		<input type="button" value="확인" onclick="proc2()"><br>
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>배열3</h2>
+		Array객체로 생성<br>
+		let fruits = new Array();<br>
+		예시 : fruits[0] = "사과";<br>
+			fruits[1] = "바나나";<br>
+		<input type="button" value="확인" onclick="proc3()"><br>
+		<div id="result3"></div>
+	</div>
+	<div class="box">
+		<h2>배열4</h2>
+		Array객체로 생성<br>
+		let fruits = new Array();<br>
+		예시 : fruits[0] = "사과";<br>
+			fruits[1] = "바나나";<br>
+		<input type="button" value="확인" onclick="proc3()"><br>
+		<div id="result3"></div>
+	</div>
+</body>
+</html>

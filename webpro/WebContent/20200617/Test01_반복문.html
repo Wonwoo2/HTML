@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>반복문</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		res = "";
+		
+		for (i = 1; i <= 100; i ++) {
+			if(i % 2 == 0 && i % 3 == 0) {
+				res += i + " ";
+			}
+		}
+		document.querySelector('#result1').innerHTML = res;
+		
+	}
+	function proc2() {
+		res = "";
+		
+		while(true) {
+			first = prompt("두 수 입력", "두 수 모두 0 입력시 종료");
+			second = prompt("두 수 입력", "두 수 모두 0 입력시 종료");
+			
+			if(first == 0 && second == 0) {
+				break;
+			}
+			
+			sum = parseInt(first) + parseInt(second);
+			
+			if(sum < 100) {
+				continue;
+			}
+			res += "입력한 수 : " + first + ", " + second + "<br>";
+		}
+		document.querySelector('#result2').innerHTML = res;
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1.문제 1 ~ 100 까지의 수 중 2의 배수이면서 3의 배수인 것만 출력</h2>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>2.문제 두 수를 입력(prompt) 두 수의 합이 100이상 일때만 출력</h2>
+		continue를 이용<br>
+		두 수 모두 0이 입력되면 종료<br>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+	
+
+</body>
+</html>
