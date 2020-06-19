@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>과제1</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		names = new Array();
+		
+		while(true) {
+			inputName = prompt("이름 입력", "취소 혹은 공백 입력시 종료")
+			
+			if(inputName == "" || inputName == null) {
+				break;
+			}
+			
+			names.push(name);
+		}
+		
+		res = `${names}`;
+		
+		document.querySelector('#result1').innerHTML = res;
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>사람 이름을 계속 입력 받아 배열에 저장하고 그 저장된 이름을 출력하는 프로그램</h2>
+		- 입력은 prompt 명령을 이용하고, 입력의 마지막은 공백문자를 입력하거나 "취소" 버튼을 눌렀을 때로 한다.<br>
+		- "취소" 버튼은 null 이 입력될 때이다.<br>
+		<input type="button" value="input" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+</body>
+</html>

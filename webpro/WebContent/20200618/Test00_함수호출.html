@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수호출</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	span{
+		border : 2px dotted pink;
+		display : inline-block;
+		width : 100px;
+		height : 30px;
+		vertical-align: middle;
+	}
+</style>
+<script type="text/javascript">
+	function proc1() {
+		// 입력한 값 가져오기
+		x = parseInt(document.querySelector('#x').value);
+		y = parseInt(document.querySelector('#y').value);
+		
+		sum = x + y;
+		
+		document.querySelector('#sum').value = sum;
+		
+		document.querySelector('#sp1').innerHTML = x;
+		document.querySelector('#sp2').innerHTML = y;
+		document.querySelector('#sp3').innerHTML = sum;
+		
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1.함수 호출</h2>
+			첫번째 : <input type="text" id="x"><br>
+			두번째 : <input type="text" id="y"><br>
+			결   과 : <input type="text" id="sum"><br>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+			<p>첫번째 값 : <span id="sp1"></span></p>
+			<p>두번째 값 : <span id="sp2"></span></p>
+			<p>결      과 : <span id="sp3"></span></p>
+	</div>
+</body>
+</html>

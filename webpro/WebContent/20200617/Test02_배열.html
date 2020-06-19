@@ -28,16 +28,18 @@
 		let res = document.getElementById('result3');
 		display(fruits, res);
 	}
-	function proc4() {
-		let fruits = new Array();
-		fruits[0] = "사과";
-		fruits[1] = "바나나";
-		fruits[2] = "오렌지";
-		fruits[3] = "포도";
-		
-		let res = document.getElementById('result3');
-		display(fruits, res);
-	}	
+	function proc4(){
+	      // 이미지 배열 생성
+	      img = ["코알라.jpg", "호랑이.jpg", "펭귄.jpg", "사자2.jpg"];
+	      // 랜덤 발생
+	      rand = parseInt(Math.random() * img.length);
+	      // 이미지의 src 변경 - 이미지배열[랜덤]
+	      vimg = document.getElementsByTagName('img')[0];
+	      
+	      // vimg.src변경
+	      vimg.setAttribute("src", "../images/" + img[rand]);
+	   }
+
 	function display(fruits, value) {
 		value.innerHTML = fruits;
 		res = "<br>";
@@ -73,13 +75,15 @@
 		<div id="result3"></div>
 	</div>
 	<div class="box">
-		<h2>배열4</h2>
-		Array객체로 생성<br>
-		let fruits = new Array();<br>
-		예시 : fruits[0] = "사과";<br>
-			fruits[1] = "바나나";<br>
-		<input type="button" value="확인" onclick="proc3()"><br>
-		<div id="result3"></div>
-	</div>
+      <h2>배열4</h2>
+      - 이미지를 리터럴을 이용한 배열로 생성<br>  imgs= ["", "", "", ""];<br> 
+      - 이미지 배열의 인덱스를 랜덤으로 발생<br>  imgs[4], imgs[0], imgs[2]<br>
+        result4에 해당 이미지를 출력<br>
+        fruits[1] = "딸기";<br>
+       <input type="button" value="확인" onclick="proc4()">
+      <div id="result4"></div>
+      <img src="../images/라이언배경.jpg">
+   </div>
+	
 </body>
 </html>

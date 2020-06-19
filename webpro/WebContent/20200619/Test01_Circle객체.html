@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function Circle(name, r) {
+		this.name = name;
+		this.r = r;
+		
+		this.getR = function() {
+			return this.r; 
+		}
+		
+		this.setR = function(r) {
+			this.r = r;
+		}
+		
+		this.getCName = function() {
+			return this.name; 
+		}
+		
+		this.setCName = function(name) {
+			this.name = name;
+		}
+		
+		
+		this.getArea = function() {
+			return  Math.PI * this.r * this.r;
+		}
+		
+		this.getCircum = function() {
+			return 2 * Math.PI * this.r;
+		}
+	}
+	
+	function proc1() {
+		circle = {
+			name: "보름달",
+			r: 5,
+			getArea: function() {
+				return Math.PI * this.r * this.r ;
+			},
+			getCircum: function() {
+				return 2 * Math.PI * this.r;
+			}
+		}
+		
+ 		
+ 		print(circle, '#result1');
+	}
+	function proc2() {
+		c = new Circle("초승달", 5);
+ 		
+ 		print(c, '#result2');
+	}
+	function proc3() {
+		plusr = parseInt(prompt("증가할 반지름 값을 입력"));
+		changeName = prompt("변경할 이름을 입력");
+		
+		// radius = c.getR();
+		
+		setCircleRadius = c.getR() + plusr;
+		
+		c.setR(setCircleRadius);
+		c.setCName(changeName);
+		print(c, '#result3');
+	}
+	
+	function print(cir, pr) {
+		res = `이름 : ${cir.name} <br>`;
+		res += `반지름 : ${cir.r} <br>`;
+ 		
+ 		res += `면적 : ${cir.getArea()} <br>`;
+ 		res += `둘레 : ${cir.getCircum()} <br>`;
+ 		
+ 		document.querySelector(pr).innerHTML = res;
+	}
+	
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1. Circle 객체</h2>
+		- 리터럴(상수)에 의한 생성<br>
+		- 속성 : name, r <br>
+		- 메소드 : getArea(), getCircum()<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>2. Circle 객체</h2>
+		- 생성자에 의한 생성<br>
+		- 속성 : name, r <br>
+		- 메소드 : getArea(), getCircum()<br>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>3. Circle 객체</h2>
+		- 2번에서 정의한 circle객체를 이용한다<br>
+		- 반지름 변경 : 현재값을 가져와 증감 시킬 값을 입력 <br>
+		- 이름 변경 <br>
+		<input type="button" value="확인" onclick="proc3()">
+		<div id="result3"></div>
+	</div>
+</body>
+</html>

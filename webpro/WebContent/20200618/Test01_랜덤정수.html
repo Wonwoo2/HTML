@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>랜덤 정수</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	#result2{
+		height: 500px;
+		overflow: auto;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		res = "";
+		for (i = 0; i < 5; i ++) {
+			random = parseInt(Math.random()*100 + 1);
+			res += random + ", ";
+		}
+		res = res.substring(0, res.length - 2);
+		document.getElementById('result1').innerHTML = res;	
+	}
+	
+	function proc1() {
+		res = "";
+		for (i = 0; i < 5; i ++) {
+			random = parseInt(Math.random()*100 + 1);
+			res += random + ", ";
+		}
+		res = res.substring(0, res.length - 2);
+		document.getElementById('result2').innerHTML += res + "<br>";
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1. 1 ~ 100까지의 랜덤 정수를 5개씩 발생</h2>
+		실행 하자마자 곧바로 출력 되도록 한다<br>
+		window.onload = function(){ }<br>
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>1. 1 ~ 100까지의 랜덤 정수를 5개씩 발생</h2>
+		- 버튼 클릭하면 proc1() 함수 호출 하여 실행 후 출력 <br>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result2"></div>
+	</div>
+</body>
+</html>

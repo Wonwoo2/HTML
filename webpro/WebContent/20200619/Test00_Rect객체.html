@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		rect = {
+				width: 10,
+				height: 4,
+				getArea: function() {
+					return this.width * this.height;
+				},
+				getCircum: function() {
+					return (this.width + this.height) * 2;
+				}
+		}
+		
+		rect.name = "사각형";
+		// res = "가로 : " + rect.width + "<br>";
+		// res += "세로 : " + rect.height + "<br>";
+ 		res = `이름 : ${rect.name} <br>`;
+		res += `가로 : ${rect.width} <br>`;
+ 		res += `세로 : ${rect.height} <br>`;
+ 		
+ 		res += `면적 : ${rect.getArea()} <br>`;
+ 		res += `둘레 : ${rect.getCircum()} <br>`;
+ 		
+ 		document.querySelector('#result1').innerHTML = res;
+	}
+	
+	function proc2() {
+		function rect(w, h) {
+			this.width = w;
+			this.height = h;
+			
+			this.getArea = function() {
+				return this.width * this.height;
+			}
+			
+			this.getCircum = function() {
+				return (this.width + this.height) * 2;
+			}
+		}
+		
+		// 이름, 가로, 세로 길이를 입력 ==> prompt() 함수 이용
+		rname = prompt("이름 입력");
+		rw = parseInt(prompt("가로 길이 입력"));
+		rh = parseInt(prompt("세로 길이 입력"));
+		
+		var r = new rect(rw, rh);
+		
+		r.name = rname;
+		
+		res = `이름 : ${r.name} <br>`;
+		res += `가로 : ${r.width} <br>`;
+ 		res += `세로 : ${r.height} <br>`;
+ 		
+ 		res += `면적 : ${r.getArea()} <br>`;
+ 		res += `둘레 : ${r.getCircum()} <br>`;
+ 		
+ 		document.querySelector('#result2').innerHTML = res;
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1. Rect 객체</h2>
+		- 상수에 의한 생성 : rect = {}<br>
+		- 속성 : width, height<br>
+		- 메소드 : getArea(), getCircum();<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>2. Rect 객체</h2>
+		- 생성자에 의한 생성 : function rect(매개변수) { }<br>
+		- 속성 : width, height<br>
+		- 메소드 : getArea(), getCircum();<br>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js_Array객체 중복되지 않은 정수</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	
+	function proc1() {
+		js_Array = new Array();
+		
+		while(true) {
+			inputNumber = parseInt(prompt("정수 입력"));
+			
+			if(js_Array.length == 5) {
+				break;
+			}
+			
+			idx = js_Array.indexOf(inputNumber);
+			
+			if(idx >= 0) {
+				continue;
+			} else {
+				js_Array.push(inputNumber);				
+			}
+		}
+		
+		res = `js_Array : ${js_Array}`;
+		document.querySelector('#result1').innerHTML = res;
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>서로 중복되지 않은 정수 5개를 입력 받아 출력하는 프로그램</h2>
+		- Js_array객체<br>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+</body>
+</html>
