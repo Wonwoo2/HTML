@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>스트링 메서드</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	a = "우리 나라 좋은 나라 대한 민국 만세";
+	function proc1() {
+		idx = a.indexOf("나라");
+		res = "찾는 글자 : 나라 <br>";
+		res += idx + "번째에 있습니다.";
+		document.getElementById('result1').innerHTML = res;
+	}
+	function proc2() {
+		idx = a.lastIndexOf("나라");
+		res = "찾는 글자 : 나라 <br>";
+		res += idx + "번째에 있습니다.";
+		document.getElementById('result2').innerHTML = res;
+	}
+	function proc3() {
+		idx = 0;
+		res = "찾는 글자 : 나라 <br>";
+		while(true) {
+			idx = a.indexOf("나라", idx);		// idx번째부터 찾겠다는 의미
+			if(idx == -1) {
+				break;
+			}
+			res += `${idx} 번째 <br>`;
+			idx = idx + "나라".length;
+		}
+		
+		
+		res += idx + "번째에 있습니다.";
+		document.getElementById('result3').innerHTML = res;
+	}
+	function proc4() {
+		str = a.charAt(6);		// 6번째 위치한 문자
+		
+		res = "6번째 위치한 문자 : " + str;
+		document.querySelector("#result4").innerHTML = res;
+		
+	}
+	function proc5() {
+		a1 = "Good Morning Happy Day";
+		str = a1.charCodeAt(6);		
+		
+		res = "6번째 위치한 문자의 유니코드 : " + str;
+		document.querySelector("#result5").innerHTML = res;
+	}
+	function proc6() {
+		a = prompt("이름을 입력");
+		
+		res = "입력한 이름 : " + a + "<br>";
+		res += "길이 : " + a.length + "<br>";
+		str = a.trim();
+		
+		res += "공백 제거후 길이 : " + str.length + "<br>";
+		
+		document.querySelector("#result6").innerHTML = res;
+	}
+	
+	function proc7() {
+		userName = document.getElementById('user');
+		un = userName.value;
+		leng = un.length;
+		
+		res = "입력한 문자열 : " + un + "<br>";
+		res += "입력한 문자열의 길이 : " + leng + "<br>";
+		vName = userName.value.trim();
+		
+		if(vName.length < 1) {
+			alert("필수 입력입니다.");
+			return false;
+		}
+		
+		res += "공백제거한 문자열 : " + vName + "<br>";
+		res += "공백 제거후 문자열의 길이 : " + vName.length + "<br>";
+		document.querySelector("#result7").innerHTML = res;
+	}
+	
+	function proc8() {
+		str = a.substring(5, 10);
+		res = `원래 문자열 : ${a}<br>`;
+		res += `a.substring(5, 10) : ${str}<br>`;
+		
+		document.querySelector("#result8").innerHTML = res;
+	}
+	function proc9() {
+		str = a.slice(5, 10);
+		res = `원래 문자열 : ${a}<br>`;
+		res += `a.slice(5, 10) : ${str}<br>`;
+		
+		document.querySelector("#result9").innerHTML = res;
+	}
+	function proc10() {
+		str = a.substr(5, 10);
+		
+		res = `원래 문자열 : ${a}<br>`;
+		res += `a.substr(5, 10) : ${str}<br>`;
+		
+		document.querySelector("#result10").innerHTML = res;
+	}
+	
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. String</h2>
+		- a = "우리 나라 좋은 나라 대한 민국 만세"<br>
+		- indexOf(item start)<br>
+		- lastIndexOf(item, start)<br>
+		<input type="button" value="indexOf" onclick="proc1()">
+		<input type="button" value="lastIndexOf" onclick="proc2()">
+		
+		<div id="result1"></div>
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>2. String 중복 문자열 찾기</h2>
+		- a = "우리 나라 좋은 나라 대한 민국 만세"<br>
+		- 찾는 문자열 : 나라<br>
+		<input type="button" value="indexOf 중복찾기" onclick="proc3()">
+		
+		<div id="result3"></div>
+	</div>
+	<div class="box">
+		<h2>3. String</h2>
+		- a = "우리 나라 좋은 나라 대한 민국 만세"<br>
+		- charAt(index) : index에 해당하는 문자<br>
+		- charCodeAt(index) : index에 해당하는 문자의 유니코드<br>
+		<input type="button" value="charAt" onclick="proc4()">
+		<input type="button" value="charCodeAt" onclick="proc5()">
+		<input type="button" value="trim" onclick="proc6()">
+		
+		<div id="result4"></div>
+		<div id="result5"></div>
+		<div id="result6"></div>
+	</div>
+	<div class="box">
+		<h2>4. String</h2>
+		<form action="test.jsp" method="post" onsubmit="return false;">
+			이름 : <input type="text" id="user"><br>
+			<input type="button" value="trim" onclick="proc7()">
+
+			<div id="result7"></div>
+		
+		</form>
+	</div>
+	
+	<div class="box">
+		<h2>5. String</h2>
+		- substring(start, end) : start ~ end-1까지의 문자열 추출<br>
+		- slice(start, end) : start ~ end-1까지의 문자열 추출<br>
+		- substr(start, length) : start 부터 length길이 만큼 추출<br>
+		<input type="button" value="substring" onclick="proc8()">
+		<input type="button" value="slice" onclick="proc9()">
+		<input type="button" value="substr" onclick="proc10()">
+		<div id="result8"></div>
+		<div id="result9"></div>
+		<div id="result10"></div>
+
+	</div>
+	
+</body>
+</html>

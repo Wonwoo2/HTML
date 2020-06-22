@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열 메소드</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	a = [11, 100, 180, 53, 22, 230, 450];
+	function proc1() {
+		a.reverse();
+		document.querySelector("#result1").innerHTML = a;
+	}
+	function proc2() {
+		a.sort();
+		document.querySelector("#result2").innerHTML = a;
+	}
+	function proc3() {
+		a.sort(function (a, b){ return a - b; })
+		document.querySelector("#result3").innerHTML = a;
+	}
+	function proc4() {
+		a.sort(function (a, b){ return b - a; })
+		document.querySelector("#result4").innerHTML = a;
+	}
+	
+	a = ["사과", "포도", "자두", "수박", "복숭아", "오렌지", "파인애플"]
+	function proc5() {
+		/* 
+		a1 = a.slice(2, 6);
+		res = "원래 배열 : " + a + "<br>";
+		res += "slice(2, 6) : " + a1 + "<br>";  
+		*/
+		idx1 = a.indexOf("포도");
+		idx2 = a.indexOf("복숭아");
+		a1 = a.slice(idx1, idx2);
+		res = "원래 배열 : " + a + "<br>";
+		res += "slice(" + idx1 + ", " + idx2 + ") : " + a1 + "<br>";
+		document.querySelector("#result5").innerHTML = res;
+	}
+	function proc6() {
+		res = "원래 배열 : " + a + "<br>";
+		
+		add = prompt("삽입할 이름을 입력");
+		
+		a.splice(3, 0, add);
+		res += "splice(3, 0, " + add + ") : " + a + "<br>";
+		document.querySelector("#result6").innerHTML = res;
+	}
+	function proc7() {
+		res = "원래 배열 : " + a + "<br>";
+		
+		add = prompt("삽입할 이름을 입력");
+		
+		a.splice(3, 1, add);
+		res += "splice(3, 0, " + add + ") : " + a + "<br>";
+		document.querySelector("#result7").innerHTML = res;
+	}
+	function proc8() {
+		res = "원래 배열 : " + a + "<br>";
+		a.splice(2, 2);		// 2번째 위치에서 2개의 요소를 삭제
+		res += "splice(2, 2) : " + a + "<br>";
+		document.querySelector("#result8").innerHTML = res;
+	}
+	a1 = ["자몽", "귤", "천도복숭아", "메론", "레몬", "토마토", "청포도"]
+	function proc9() {
+		
+		res = `a = ${a} <br>`;
+		res += `a1 = ${a1} <br>`;
+		
+		a2 = a.concat(a1);
+		res += `a2 = a.concat(a1) : ${a2}`;
+		document.querySelector("#result9").innerHTML = res;
+	}
+	function proc10() {
+		res = `a1 배열 길이 : ${a1.length} <br>`;
+		
+		a2 = a1.join();
+		res += `a1.join() 문자열 : ${a2.length} <br>`;
+		
+		document.querySelector("#result10").innerHTML = res;
+		
+		res = "a1 배열";
+		for (i = 0; i < a1.length; i ++) {
+			res += `${i} 번째 요소 : ${a1[i]} <br>`
+		}
+		
+		res += "a1.join()후 a2문자열"
+		for (i = 0; i < a2.length; i ++) {
+			res += `${i} 번째 요소 : ${a2[i]} <br>`
+		}
+		
+		document.querySelector("#result10").innerHTML += res;
+	}
+
+
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. 배열 정렬</h2>
+		- a = [11, 100, 180, 53, 22, 230, 450]
+		- reverse : 배열을 거꾸로 뒤집기<br>
+		- sort() : <br>
+		- sort(function(a, b)){} : 오름차순 <br>
+		- sort(function(a, b)){} : 내림차순 <br>
+		<input type="button" value="reverse" onclick="proc1()">
+		<input type="button" value="sort 기본" onclick="proc2()">
+		<input type="button" value="sort asc" onclick="proc3()">
+		<input type="button" value="sort dsc" onclick="proc4()">
+		<div id="result1"></div>
+		<div id="result2"></div>
+		<div id="result3"></div>
+		<div id="result4"></div>
+	</div>
+	<div class="box">
+		<h2>1. 배열 slice, splice</h2>
+		- a = ["사과", "포도", "자두", "수박", "복숭아", "오렌지", "파인애플"]
+		- slice(start, end) : start ~ end-1까지의 문자열 추출<br>
+		- splice(index, n(지울 갯수), a(추가할 요소), c(추가할 요소), d(추가할 요소)) : 수정 - 삽입/추가, 삭제, 삭제후 추가 <br>
+		- splice(3, 0, "메론") : 3번째 위치에 메론을 삽입<br>
+		- splice(3, 1, "메론") : 3번째 위치의 요소 삭제후 삽입, 여러 개의 요소를 삽입할 수 있음<br>
+		- a.concat(a1) : a배열과 a1배열을 합침<br>
+		- a.join() : a배열을 하나의 문자열로 반환<br>
+		- a2.join() : a2배열을 하나의 문자열로 반환<br>
+				
+		<input type="button" value="slice" onclick="proc5()">
+		<input type="button" value="splice" onclick="proc6()">
+		<input type="button" value="splice" onclick="proc7()">
+		<input type="button" value="splice" onclick="proc8()">
+		<input type="button" value="concat" onclick="proc9()">
+		<input type="button" value="join" onclick="proc10()">
+		<div id="result5"></div>
+		<div id="result6"></div>
+		<div id="result7"></div>
+		<div id="result8"></div>
+		<div id="result9"></div>
+		<div id="result10"></div>
+
+	</div>
+</body>
+</html>
