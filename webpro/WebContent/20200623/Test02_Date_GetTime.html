@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	d1 = new Date();
+	
+	function proc1() {
+		myBirth = new Date("1993 04 04");
+		
+		time = d1.getTime() - myBirth.getTime();
+		sec = time / 1000;
+		res = `태어난 날 1993 04 04 에서 오늘까지 경과한 초 : ${sec}<br>`
+		
+		min = sec / 60;
+		res += `태어난 날 1993 04 04 에서 오늘까지 경과한 분 : ${min}<br>`
+		
+		hour = min / 60;
+		res += `태어난 날 1993 04 04 에서 오늘까지 경과한 시간 : ${hour}<br>`
+		
+		day = hour / 24;
+		res += `태어난 날 1993 04 04 에서 오늘까지 경과한 일 수 : ${day}<br>`
+		
+		year = day / 365;
+		res += `태어난 날 1993 04 04 에서 오늘까지 경과한 년 수 : ${year}<br>`
+		
+		
+		document.querySelector("#result1").innerHTML = res;
+	}
+	function proc2() {
+		time = d1.getTime() + 24 * 60 * 60 * 1000 * 100;
+		day = new Date(time);
+		
+		days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+		
+		
+		res = "현재 날짜 : " + day.toLocaleDateString() + "<br>";
+		res += "현재 요일 : " + days[day.getDay()] + "<br>";
+		document.querySelector("#result2").innerHTML = res;
+	}
+	function proc3() {
+		c = new Date(2020, 12-1, 25);	
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. Date - getTime() </h2>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>2. getTime() 경과시간 구하기 </h2>
+		- 오늘부터 100일 후의 날짜 구하기<br>
+		- 오늘의 getTime() + 100일 후의 milisec<br>
+		- 1일의 milisec 값 : 24 * 60 * 60 * 1000<br>
+		- 100일의 milisec 값 : 24 * 60 * 60 * 1000 * 100<br>
+		- new Date(miliseconds) : 새로운 날짜를 생성
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>3. getTime() 경과시간 구하기 </h2>
+		- 크리스마스까지 남은 일수 구하기<br>
+		- new Date(2020, 12-1, 25)<br>
+		<input type="button" value="확인" onclick="proc3()">
+		<div id="result3"></div>
+	</div>
+</body>
+</html>

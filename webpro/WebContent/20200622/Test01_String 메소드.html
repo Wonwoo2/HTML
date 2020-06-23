@@ -103,6 +103,27 @@
 		
 		document.querySelector("#result10").innerHTML = res;
 	}
+	function proc11() {
+		res = "문자열의 길이 : " + a.length + "<br>";
+		list = a.split(" ");
+		
+		res += `a.split(" ")의 길이 : ${list.length} <br>`;
+		
+		for (i = 0; i < list.length; i ++) {
+			res += `${i} 번째 : ${list[i]} <br>`;
+		}
+		document.querySelector("#result11").innerHTML = res;
+		
+	}
+	function proc12() {
+		text = document.getElementsByTagName('textarea')[0];
+		// tex = document.querySelector('textarea');
+		tValue = text.value;
+		
+		tValue = tValue.replace(/\r/g, "").replace(/\n/g, "<br>")
+		document.querySelector("#result12").innerHTML = tValue;
+		
+	}
 	
 </script>
 </head>
@@ -162,7 +183,20 @@
 		<div id="result8"></div>
 		<div id="result9"></div>
 		<div id="result10"></div>
-
+	</div>
+	<div class="box">
+		<h2>6. String</h2>
+		- a = "우리 나라 좋은 나라 대한 민국 만세"<br>
+		- split('구분자')<br>
+		<input type="button" value="split" onclick="proc11()">
+		<div id="result11"></div>
+	</div>
+	<div class="box">
+		<h2>9. String</h2>
+		- replace(old, new) : old문자를 new문자로 변경 <br>
+		<textarea rows="10" cols="50"></textarea>
+		<input type="button" value="확인" onclick="proc12()">
+		<div id="result12"></div>
 	</div>
 	
 </body>
