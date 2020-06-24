@@ -43,7 +43,14 @@
 		document.querySelector("#result2").innerHTML = res;
 	}
 	function proc3() {
-		c = new Date(2020, 12-1, 25);	
+		c = new Date(2020, 12-1, 25);
+		time = c.getTime() - d1.getTime();
+		
+		day = time / 1000 / 60 / 60 / 24;
+		res = `오늘부터 크리스마스까지 남은 일 수 : ${day}<br>`
+		
+		
+		document.querySelector("#result3").innerHTML = res;
 	}
 </script>
 </head>

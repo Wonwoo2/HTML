@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>subWindow</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		addr = document.querySelector('input').value;
+		
+		len = addr.trim().length;
+		if(len < 1) {
+			alert("주소를 입력하세요");
+			return false;
+		}
+		
+		// 부모창으로 보내기
+		opener.document.querySelector('#result1').innerHTML = addr;
+		window.close();
+	}
+	
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. Window</h2>
+		- 부모창에서 열리는 자식창 입니다.<br>
+		- 부모창으로 접근하기 위해서 opener 속성을 이용한다.
+		주소 : <input type="text">
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+</body>
+</html>

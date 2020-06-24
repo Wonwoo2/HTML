@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date 객체</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	today = new Date();
+	
+	function proc1() {
+		dValue = document.querySelector('input').value;
+		
+		inputDay = new Date(dValue);
+		
+		time = today.getTime() - inputDay.getTime();
+		time = time / 1000 / 60 / 60 / 24;
+		
+		console.log(time);
+		res = `구입날짜 : ${inputDay.toLocaleDateString()}<br>`;
+		if(time < 0) {
+			res += `날짜 선택 오류<br>`;
+		} else if(time >= 7) {
+			res += `교환/반품 불가능<br>`;
+		} else {
+			res += `교환/반품 가능<br>`;
+		}
+		
+		document.querySelector('#result1').innerHTML = res;
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. Date 객체</h2>
+		- 구입날짜를 선택한다.<br>
+		- 오늘날짜 까지의 날 수를 구한다.<br>
+		- 구한 날수가 7일 이상이면 교환반품 불가능, 7일 미만이면 교환반품 가능<br>
+		구입 날짜 : <input type="date"><br>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+</body>
+</html>
