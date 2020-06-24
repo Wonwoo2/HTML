@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>과제</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	today = new Date();
+	function proc1() {
+		day = new Date(2010, 1-1, 1);
+		time = today.getTime() - day.getTime(); 
+	
+		calDay = time / 1000 / 60 / 60 / 24;
+		calDay = parseInt(calDay);
+		res = `2010년 1월 1일부터 오늘까지의 날짜 수 : ${calDay}일<br>`
+	
+	
+		document.querySelector("#result1").innerHTML = res;
+	}
+	function proc2() {
+		time = today.getTime() + 24 * 60 * 60 * 1000 * 500;
+		day = new Date(time);
+	
+		res = "현재 날짜 : " + today.toLocaleDateString() + "<br>";
+		res += "500일 후의 날짜 : " + day.toLocaleDateString() + "<br>";
+		document.querySelector("#result2").innerHTML = res;
+	}
+
+
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>2010년 1월 1일부터 오늘까지의 날짜수를 계산하는 프로그램</h2>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>오늘부터 500일 후의 날짜를 출력하는 프로그램</h2>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+</body>
+</html>
