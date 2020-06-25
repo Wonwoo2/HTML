@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Navigator 객체</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		/* res = `appName : ${navigator.appName}<br>`;
+		res += `appVersion : ${navigator.appVersion}<br>`;
+		res += `platform : ${navigator.platform}<br>`;
+		res += `userAgent : ${navigator.userAgent}<br>`; */
+		
+		res = "";
+		for (var key in navigator) {
+			value = navigator[key];
+			res += `${key} : ${value}<br>`;
+		}
+		
+		document.querySelector('#result1').innerHTML = res;
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. Navigator객체</h2>
+		- 브라우저에 대한 정보
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+</body>
+</html>

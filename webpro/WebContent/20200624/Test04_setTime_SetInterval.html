@@ -23,6 +23,12 @@
 				cg = Math.floor(Math.random() * 256);
 				cb = Math.floor(Math.random() * 256);
 				div.style.backgroundColor = `rgb(${cr}, ${cg}, ${cb})`;
+				
+				console.log(cr + " " + cg + " " + ch);
+				
+				cr = cr.toString(16);
+				cg = cg.toString(16);
+				cb = cb.toString(16);
 			}, 1000)
 			
 			// 확인버튼 안보이게
@@ -30,10 +36,37 @@
 			t.style.display = "none";
 		}
 		function stop(){
-			clearInterval(time);
+			// clearInterval(time);
+			clearInterval(a);
 			
 			// 확인버튼 보이게
-			document.querySelector('#confirm').style.display = "inline";
+			// document.querySelector('#confirm').style.display = "inline";
+			document.querySelector('#confirm2').style.display = "inline";
+		}
+		function proc3() {
+			str = [ "Hello", "Good", "Happy", "Orange"];
+			
+			res3 = document.querySelector('#result3');
+			
+			// str배열의 인덱스를 랜덤으로 지정
+			a = setInterval(function(){
+				idx = Math.floor(Math.random() * str.length);
+				
+				// 글자색, 크기 변경
+				cr = Math.floor(Math.random() * 256);
+				cg = Math.floor(Math.random() * 256);
+				cb = Math.floor(Math.random() * 256);
+				res3.style.color = `rgb(${cr}, ${cg}, ${cb})`;
+				
+				font = Math.floor(Math.random() * 36 + 15);
+				// console.log(font);
+				res3.style.fontSize = `${font}px`;
+				// 출력
+				res3.innerHTML = str[idx];
+				
+			}, 500);
+			t = document.querySelector('#confirm2');
+			t.style.display = "none";
 		}
 		
 	</script>
@@ -50,10 +83,19 @@
 	<div class="box">
 		<h2>1. setInterval</h2>
 		- setInterval(function(){}, 1000)<br>
-		- 1초 마다 result1의 배경색을 바꾼다.<br>
+		- 1초 마다 result2의 배경색을 바꾼다.<br>
 		<input type="button" id="confirm" value="확인" onclick="proc2()">
 		<input type="button" value="정지" onclick="stop()">
 		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>2. setInterval</h2>
+		- setInterval(function(){}, 1000)<br>
+		- 1초 마다 result3에 문자열을 출력<br>
+		- 문자열은 배열로 구성한다<br>
+		<input type="button" id="confirm2" value="확인" onclick="proc3()">
+		<input type="button" value="정지" onclick="stop()">
+		<div id="result3"></div>
 	</div>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Screen 객체</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		win = window.open("", "", "width=500 height=500");
+		win.moveTo(100, 100);
+	}
+	function proc2() {
+		// win.resizeTo(50, 50);		// 50, 50 크기로 다시 지정하는 것(절대값 지정)
+		// win.resizeBy(50, 50);		// 현재 크기에서 50, 50만큼 크기 증가 시키는 것(상대값 지정)
+		
+		win.moveTo(0, 0);
+		win.resizeTo(screen.availWidth, screen.availHeight);
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. Screen 객체</h2>
+		- screen.availWidth : 브라우저의 사용가능 길이
+		- screen.availHeight : 브라우저의 사용가능 높이
+		- screen.width : 브라우저의 길이
+		- screen.height : 브라우저의 높이
+		<input type="button" value="지정크기" onclick="proc1()">
+		<input type="button" value="전체크기" onclick="proc2()">
+		<div id="result1"></div>
+	</div>
+</body>
+</html>
