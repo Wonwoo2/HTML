@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단 출력</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	div{
+		margin-left: 80px;
+		text-align: center;
+		width: 90%;
+		height: 95%;
+		border: white;
+	}
+	p{
+		font-size: 1.8em;
+	}
+	#result{
+		font-size: 1.2em;
+	}
+</style>
+<script type="text/javascript">
+	function proc() {
+		vDan = document.querySelector('#dan').value;
+	
+		res = vDan + "단<br>";
+	
+		for (i = 1; i <= 9; i ++) {
+			res += `${vDan} * ${i} = ${vDan * i}<br>`; 
+		}
+	
+		document.querySelector('#result').innerHTML = res;
+	
+	}
+</script>
+</head>
+<body>
+	<div>
+		<input id="dan" type="text">단
+		<input type="button" value="출력" onclick="proc()">
+	</div>
+	<div>
+		<p>결과 출력</p>
+	</div>
+	<div id="result">
+		
+	</div>
+</body>
+</html>

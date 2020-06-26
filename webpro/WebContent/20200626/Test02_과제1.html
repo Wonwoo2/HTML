@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1. 문제 - 가위바위보 이미지</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	div{
+		width: 99%;
+		height: 95%;
+		margin : 0px;
+		padding: 0px;
+		float: left;
+		border: white;
+	}
+	#header{
+		text-align: center;
+		height: 100px;
+		border: white;
+	}
+	img{
+		width: 50%;
+		height: 400px;
+	}
+	#nav{
+		width: 48.4%;
+		height: 100px;
+		text-align: center;
+		background-color: yellow;
+		border: white;
+		margin-left: 20px;
+		font-size: 1.8em;
+	}
+	#nav1{
+		width: 48.4%;
+		height: 100px;
+		text-align: center;
+		border: white;
+		background-color: pink;
+		font-size: 1.8em;
+	}
+	#section1{
+		width: 48.3%;
+		text-align: center;
+		border: white;
+	}
+	#section2{
+		width: 48.3%;
+		text-align: center;
+		border: white;
+	}
+	input{
+		width: 150px;
+		height: 80px;
+		font-size: 1.5em;
+	}
+	#result{
+		font-size: 2.0em;
+		text-align: center;
+	}
+	
+</style>
+<script type="text/javascript">
+	function gameStart() {
+		userArray = [ "가위_좌.png", "바위_좌.png", "보_좌.png"  ];
+		comArray = [ "보_우.png", "가위_우.png", "바위_우.png" ];
+		
+		user = prompt("가위바위보 입력");
+		choice = user + "_좌.png";
+		random = Math.floor(Math.random() * comArray.length);
+		
+		uimg = document.querySelector('#img1');
+		cimg = document.querySelector('#img2');
+		
+		uimg.setAttribute("src", "../images/" + choice);
+		cimg.setAttribute("src", "../images/" + comArray[random]);
+		
+		userChoice = choice.substring(0, 2);
+		comChoice = comArray[random].substring(0, 2);
+		
+		str = "";
+		if(userChoice == comChoice) {
+			str += "비겼습니다.";
+		} else if((userChoice == "가위" && comChoice == "보") || 
+				(userChoice == "바위" && comChoice == "가위") || 
+				(userChoice == "보" && comChoice == "바위")) {
+			str += "당신이 이겼습니다.";
+		} else {
+			str += "컴퓨터가 이겼습니다.";
+		}
+		
+		document.querySelector('#result').innerHTML = str;
+	}
+</script>
+</head>
+<body>
+	<div>
+		<div id="header">
+			<input type="button" value="게임시작" onclick="gameStart()">
+		</div>
+		
+		<div id="nav">
+			<p id="user">사람</p>
+		</div>
+		<div id="nav1">
+			<p id="com">컴퓨터</p>
+		</div>
+	
+		<div id="section1">
+			<img id="img1" alt="사용자" src="../images/바위_좌.png">
+		</div>
+		
+		<div id="section2">
+			<img id="img2" alt="컴퓨터" src="../images/바위_우.png">
+		</div>
+		
+		<div id="result">
+		</div>
+	</div>
+	
+</body>
+</html>

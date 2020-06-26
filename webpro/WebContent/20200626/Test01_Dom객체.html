@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom 객체</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	img{
+		width : 200px;
+		height : 200px;
+		border-radius : 100%;
+	}
+</style>
+<script type="text/javascript">
+	function removeNode() {
+		parent = document.querySelector('#target');
+		child = document.querySelector('#p1');
+		
+		parent.removeChild(child);
+	}
+	function addProc() {
+		// 문자열 배열
+		str = [ "HAPPY", "LOVE", "HOPE", "BABY", "EMOTION" ];
+		// str[0], str[1], str[4], str[3]
+		
+		// 랜덤발생 - str의 길이만큼
+		random = Math.floor(Math.random() * str.length);
+		
+		tnode = document.createTextNode(str[random]);
+		
+		// p 태그를 생성
+		pTag = document.createElement('p');
+		// p 태그에 생성된 문자열 추가
+		pTag.appendChild(tnode);
+		
+		// result에 p태그 추가
+		res = document.querySelector('#result1');
+		res.appendChild(pTag);
+		
+	}
+	function removeProc() {
+		// result로 접근
+		parent = document.querySelector('#result1');
+			
+		// 삭제할 마지막 child를 선택 한다.
+		child = parent.lastChild;
+		
+		// 삭제 수행
+		parent.removeChild(child);
+	}
+	
+	function addRemove() {
+		str = [ "HAPPY", "LOVE", "HOPE", "BABY", "EMOTION" ];
+		random = Math.floor(Math.random() * str.length);
+		
+		// 문자열로 textNode 생성
+		tnode = document.createTextNode(str[random]);
+		// 삭제버튼 태그 생성
+		iTag = document.createElement('input');
+		iTag.setAttribute("type", "button");
+		iTag.setAttribute("value", "삭제");
+		
+		iTag.onclick = function() {
+			// 클릭한 버튼을 this로 사용 가능
+			
+			// 삭제할 요소 ptag검색
+			child = this.parentNode
+			// 삭제할 요소(ptag)와 부모(result2) 검색
+			
+			// parent = this.parentNode.parentNode;
+			parent = document.querySelector('#result2');
+			parent.removeChild(child);
+		}
+		
+		// p 태그 생성
+		pTag = document.createElement('p');
+		
+		// p 태그에 textNode와 삭제버튼을 추가
+		pTag.appendChild(tnode);
+		pTag.appendChild(iTag);
+		
+		// result2에 p태그를 추가
+		res = document.querySelector('#result2');
+		res.appendChild(pTag);
+	}
+	
+	function changeSrc() {
+		arr = [ "호랑이.jpg", "코알라.jpg", "펭귄.jpg", "풍차.jpg", "이순신.jpg", "영화1.jpg",
+		        "영화2.jpg", "식품1.jpg", "식품2.jpg", "스포츠3.jpg", "스포츠2.jpg", "스포츠1.jpg" ];
+		
+		// 랜덤 발생
+		random = Math.floor(Math.random() * arr.length);
+		
+		// img로 접근
+		vimg = document.querySelector('#img1');
+		
+		vimg.setAttribute("src", "../images/" + arr[random]);
+	}
+	function onOffProc() {
+		// img의 src값을 얻어온다
+		vimg = document.querySelector('#img2');
+		vsrc = vimg.getAttribute("src");
+		
+		// src 전체문자열 중에서 off라는 일부 문자열이 포함되었는지 확인
+		vStr = vsrc.match("off");
+		if(vStr == null) {
+			vimg.setAttribute("src", "../images/sw_off.png");
+		} else {
+			vimg.setAttribute("src", "../images/sw_on.png");
+		}
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. dom 객체</h2>
+		<div id="target">
+			- parent.removeChild(child)<br>
+			<p id="p1">첫 번째 단락</p>
+			<p id="p2">두 번째 단락</p>
+		</div>
+		<button type="button" onclick="removeNode()">누르세요</button>
+	</div>
+	<div class="box">
+		<h2>2. dom 객체</h2>
+		- node 삭제<br>
+		- parent.removeChild(child)<br>
+		- 추가 클릭할 시 result에 문자열 추가<br>
+		- 삭제 클릭할 시 result의 문자열 삭제<br>
+		<button type="button" onclick="addProc()">추가</button>
+		<button type="button" onclick="removeProc()">삭제</button>
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>3. dom 객체</h2>
+		- 버튼 클릭 문자열로 textNode생성<br>
+		- 삭제버튼 태그 생성<br>
+		- p태그 생성<br>
+		- p태그에 textNode와 삭제버튼을 추가<br>
+		- result2에 p 태그를 추가<br>
+
+		- 생성된 삭제버튼 클릭<br>
+		- parent.removeChild(child)<br>
+		<button type="button" onclick="addRemove()">추가/삭제</button>
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>4. dom 객체 - 이미지 속성 변경</h2>
+		- 버튼 클릭 할때 마다 이미지를 변경<br>
+		- 이미지 배열 구성<br>
+		- 랜덤 발생<br>
+		<button type="button" onclick="changeSrc()">이미지 변경</button>
+		<div id="result3">
+			<img alt="펭귄" src="../images/펭귄.jpg" id="img1">
+		</div>
+	</div>
+	<div class="box">
+		<h2>4. dom 객체 - 이미지 속성 변경</h2>
+		- 두 개의 이미지가 번갈아 가며 나타난다.<br>
+		- src 값을 비교<br>
+		- src.match("off"); ==> off라는 문자열이 포함되었는지 검사 <br>
+		- ==> 해당 문자열이 포함되어 있지 않으면 null 리턴<br>
+		<button type="button" onclick="onOffProc()">onOff</button>
+		<div id="result3">
+			<img alt="스위치" src="../images/sw_off.png" id="img2">
+		</div>
+	</div>
+	
+</body>
+</html>

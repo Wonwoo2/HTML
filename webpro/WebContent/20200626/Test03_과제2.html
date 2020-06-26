@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form - 구구단</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	div{
+		margin-left: 80px;
+		text-align: center;
+		width: 90%;
+		height: 95%;
+		border: white;
+	}
+	#gugudan{
+		width:300px;
+		text-align: center;
+		overflow: scroll;
+		font-size: 1.5em;
+		
+	}
+	#a{
+		margin-top:100px;
+		border: white;
+	}
+</style>
+<script type="text/javascript">
+	function proc() {
+		vDan = document.querySelector('#dan').value;
+		
+		res = vDan + "단\n";
+		
+		for (i = 1; i <= 9; i ++) {
+			res += `${vDan} * ${i} = ${vDan * i}\n`; 
+		}
+		
+		document.querySelector('#gugudan').innerHTML = res;
+		
+	}
+</script>
+</head>
+<body>
+<div id="a">
+	<div>
+		<input id="dan" type="text">단
+		<input type="button" value="출력" onclick="proc()">
+	</div>
+	<div>
+		<textarea id="gugudan" rows="20" cols="10"></textarea>
+	</div>
+</div>
+
+	
+</body>
+</html>

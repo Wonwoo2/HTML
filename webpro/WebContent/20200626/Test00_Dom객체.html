@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dom 객체</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	function proc1() {
+		list = document.getElementsByTagName('ul')[0];
+	    allItems = list.getElementsByTagName('li');
+	    
+	   	res = "";
+	    for (i = 0; i < allItems.length; i++) {
+	       	text = allItems[i].firstChild.data;
+        	res += `${text}<br>`;
+	    }
+		    
+	    document.getElementById('result1').innerHTML = res;
+	}
+	function proc2() {
+		list = document.getElementsByTagName('ul')[1];
+	    allItems = list.getElementsByTagName('li');
+		    
+	   	res = "";
+	    for (i = 0; i < allItems.length; i++) {
+	       	text = allItems[i].firstChild.data;
+	       	
+	       	vimg = document.createElement('img');
+	       	// vimg.src = "";
+	       	vimg.setAttribute("src", "../images/" + text + ".jpg");
+	       	vimg.setAttribute("alt", text);
+	       	vimg.setAttribute("width", "100px");
+	       	vimg.setAttribute("height", "100px");
+	       	
+	       	allItems[i].appendChild(vimg);
+	    }
+	}
+	function proc3(a) {
+		text = a.firstChild.data;
+		
+		vimg = document.createElement('img');
+       	vimg.setAttribute("src", "../images/" + text + ".jpg");
+       	vimg.setAttribute("alt", text);
+       	vimg.setAttribute("width", "100px");
+       	vimg.setAttribute("height", "100px");
+        	
+       	a.appendChild(vimg);
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1. dom 객체</h2>
+		<ul>
+	        <li>사과</li>
+	        <li>오렌지</li>
+	        <li>바나나</li>
+	        <li>복숭아</li>
+	        <li>포도</li>
+	    </ul>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1"></div>
+	</div>
+	<div class="box">
+		<h2>2. dom 객체 - 새로운 요소 생성하기</h2>
+		- createElement(tagname)<br>
+		- createTextNode(text)<br>
+		- appendChild(node)<br>
+		- &lt;img src="" alt=""&gt;<br>
+		- setAttribute("src", "../images/" + text + ".jpg")<br>
+		<ul>
+	        <li>단풍</li>
+	        <li>대나무숲</li>
+	        <li>등대</li>
+	        <li>딸기스무디</li>
+	        <li>꽃</li>
+	    </ul>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<h2>3. dom 객체</h2>
+		<ul>
+	        <li onclick="proc3(this)">단풍</li>
+	        <li onclick="proc3(this)">대나무숲</li>
+	        <li onclick="proc3(this)">등대</li>
+	        <li onclick="proc3(this)">딸기스무디</li>
+	        <li onclick="proc3(this)">꽃</li>
+	    </ul>
+	</div>
+</body>
+</html>
