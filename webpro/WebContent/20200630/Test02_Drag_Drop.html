@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Drag & Drop</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+img {
+	width : 150px;
+	height : 150px;
+}
+.box div {
+	height : 250px;
+}
+</style>
+<script type="text/javascript">
+	function dragstart() {
+		// setData()
+		
+		// drag 이벤트 대상 - img
+		console.log("target = " + event.target);
+		console.log("target id = " + event.target.id);
+		console.log("target tagname = " + event.target.tagName);
+		
+		// setData() - 이벤트 대상을 설정
+		event.dataTransfer.setData("target_img", event.target.id);
+		
+	}
+	function dropProc() {
+		// 이벤트 대상 - div
+		console.log(event.target);
+		
+		// getData() - img의 id값 : img1, img2, img3
+		imgid = event.dataTransfer.getData("target_img");
+		
+		ele = document.querySelector("#" + imgid);
+		event.target.appendChild(ele);
+		
+		// drop의 대상이 div이다
+		// 그러나 이미지 위에 이미지를 겹쳐놓으면 drop의 대상이 img가 된다
+		// 항상 drop의 대상이 div가 되도록 해야한다.
+		
+		if(event.target.tagName == "IMG") {
+			event.target.parentNode.appendChild(ele);
+		} else {
+			evet.target.appendChild(ele);
+		}
+	}
+	function dragOver() {
+		event.preventDefault();
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. Drag & Drop</h2>
+		<div id="result1" ondrop="dropProc()" ondragover="dragOver()"></div>
+		<br>
+		<img id="img1" ondragstart="dragstart()" src="../images/카페라떼.jpg" alt="카페라떼" draggable="true"> 
+		<img id="img2" ondragstart="dragstart()" src="../images/카라멜마키아또.jpg" alt="카라멜마끼아또" draggable="true">
+		<img id="img3" ondragstart="dragstart()" src="../images/아메리카노.jpg" alt="아메리카노" draggable="true"> 
+		<img id="img4" ondragstart="dragstart()" src="../images/에스프레소.jpg" alt="에스프레소" draggable="true">
+		<img id="img5" ondragstart="dragstart()" src="../images/핫초코.jpg" alt="핫초코" draggable="true">
+	</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SELECT 객체 예제</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+	.box{
+		height : 650px;
+	}
+	.dd{
+		float : left;
+	}
+	#left, #right{
+		width: 210px;
+		height: 320px;
+		padding : 0px;
+	}
+	#center{
+		width: 155px;
+		height: 290px;
+		text-align: center;
+	}
+	#header, #footer{
+		width : 600px;
+	}
+	#footer{
+		text-align: center;
+	}
+	#footer input[type=button]{
+		width : 80px;
+	}
+	select{
+		width : 100%;
+		height : 100%;
+	}
+	.box input[type=button]{
+		width : 80%;
+		height : 30px;
+		padding : 0px;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function(){
+    	f = document.selform;
+ 	}
+	// a = document.getElementsByName("selform")[0];
+	function add(){
+		tValue = f.txt.value;
+		
+		if(tValue.trim().length < 1) {
+			alert("데이터를 입력하세요");
+			return false;
+		}
+		
+		opt = document.createElement("option");
+		opt.value = tValue;
+		opt.text = tValue;
+		f.ls.appendChild(opt)
+		
+		
+		
+		/* opt = document.createElement('option');
+		opt.setAttribue('value', tValue);
+		
+		topt = document.createTextNode(tValue);
+		opt.appendChild(topt);
+		
+		f.ls.appendChild(opt); */
+		
+		// 입력한 내용을 지우기
+		f.txt.value = "";
+		f.txt.focus();
+	}
+	
+	function toRight() {
+		// 왼쪽에서 선택한 값을 오른쪽으로 보내기
+		
+		idx = f.ls.selectedIndex;
+		// 선택한 항복이 없다면
+		if(idx == -1) {
+			alert("항목을 선택하세요");
+			return;
+		}
+		f.rs.appendChild(f.ls.options[idx]);
+		
+		/* // 선택한 항목이 있다면 idx번 쨰의 값을 가져온다
+		lValue = f.ls.options[idx].value;
+		
+		// 오른쪽으로 보낸다
+		ropt = document.createElement('option');
+		ropt.value = lValue;
+		ropt.text = lValue;
+		f.rs.appendChild(ropt);
+		// 왼쪽에서 지운다
+		f.ls.removeChild(f.ls.options[idx]); */
+
+		
+	}
+	function toLeft() {
+		idx = f.rs.selectedIndex;
+		// 선택한 항복이 없다면
+		if(idx == -1) {
+			alert("항목을 선택하세요");
+			return;
+		}
+		f.ls.appendChild(f.rs.options[idx]);
+	}
+	function rightAll() {
+		// 왼쪽의 갯수 값을 얻는다
+		len = f.ls.length;
+		
+		for (i = 0; i < len; i ++) {
+			lValue = f.ls.options[0].value;
+			
+			// 오른쪽으로 보낸다 - option생성
+			opt = document.createElement("option");
+			opt.value = lValue;
+			opt.text = lValue;
+			f.rs.appendChild(opt);
+			
+			f.ls.removeChild(f.ls.options[0]);
+		}
+	}
+	function leftAll() {
+		len = f.rs.length;
+		
+		for (i = 0; i < len; i ++) {
+			rValue = f.rs.options[0].value;
+			
+			// 오른쪽으로 보낸다 - option생성
+			opt = document.createElement("option");
+			opt.value = rValue;
+			opt.text = rValue;
+			f.ls.appendChild(opt);
+			
+			f.rs.removeChild(f.rs.options[0]);
+		}
+	}
+</script>
+</head>
+<body>
+<pre>
+<strong>
+form태그 안에 input type=text인 요소가 한개만 있을 경우
+자동으로 submit이 실행된다.
+자동 submit을 방지하기 위해서 form 태그 안에 onsubmit=return false;를 기술해준다
+
+새로운 내용이나 태그를 appendChild()로 추가한다.
+기존의 이미 있는 내용이나 태그를 appendChild()로 추가한다.
+</strong>
+</pre>
+	<div class="box">
+		<h2>1. SelectFrom</h2>
+		
+		<form name="selform">
+		
+		<div id="header">select 객체 예제</div>
+		<div class="dd" id="left">
+			<select name="ls" size="9" multiple>
+			</select>
+		</div>
+		<div class="dd" id="center">
+			<input type="button" value=">" onclick="toRight()"><br><br>
+			<input type="button" value="<" onclick="toLeft()"><br><br>
+			<input type="button" value=">>" onclick="rightAll()"><br><br>
+			<input type="button" value="<<" onclick="leftAll()"><br><br>
+		</div>
+		<div class="dd" id="right">
+			<select name="rs" size="9" multiple>
+			</select>
+		</div>
+		<div class="dd" id="footer">
+			<input type="text" name="txt">
+			<input type="button" value="추가" onclick="add()">
+		</div>
+		
+		</form>
+	</div>
+</body>
+</html>

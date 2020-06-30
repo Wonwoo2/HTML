@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FileAPI</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+.box input[type=file] {
+	width : 350px;
+	background : lightblue;
+}
+</style>
+<script type="text/javascript">
+	function readProc() {
+		f = document.querySelector('#file').files[0];
+		// f : File 객체
+		
+		mDate = f.lastModifiedDate;
+		fDate = mDate.toLocaleString();
+		
+		res = "";
+		res += `파일 이름 : ${f.name} \n`;
+		res += `파일 크기 : ${f.size} \n`;
+		res += `파일 유형 : ${f.type} \n`;
+		res += `수정 날짜 : ${fDate} \n`;
+		
+		document.querySelector('textarea').value = res;
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. FileAPI 읽기 / 첨부하기</h2>
+		- 첨부파일 값 가져오기 : files<br>
+		- File 객체를 리턴한다<br>
+		- File 객체에서 정보를 얻는다. 이름name, 수정한 날짜,lastModifiedDate, 크기size, 유형type<br>
+		- 첨부된 파일 내용 읽기 : FileReader 객체<br>
+		- 메소드 : readAsText(File 객체, encoding), readAsDateURL(File객체)<br>
+		- 속성 : result - 읽은 파일의 내용을 저장 하는 속성<br>
+			   error - 오류 발생시 오류정보를 저장 하는 속성<br>
+		
+		<input type="file" id="file">
+		<br>
+		<input type="button" value="읽기" onclick="readProc()">
+		<br><br>
+		<textarea rows="10" cols="60"></textarea>
+		<br>
+		<h2>파일 정보</h2>
+		<div id="result1"></div>
+	</div>
+</body>
+</html>

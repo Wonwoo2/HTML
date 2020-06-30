@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Event</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+img {
+	width: 95%;
+	height: 50%;
+}
+
+.box#result3.main.guess {
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+	float: left;
+	margin: 5px;
+}
+
+#headr {
+	width: 98%;
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		divList = document.getElementsByClassName('gbox');
+		imgs = document.getElementsByTagName('img');
+		
+		for (i = 0; i < divList.length; i ++) {
+			divList[i].addEventListener('click', clickSales);
+		}
+		
+		for (i = 0; i < imgs.length; i ++) {
+			imgs[i].addEventListener('mouseover', imgOver);
+			imgs[i].addEventListener('mouseup', imgOut);
+		}
+	}
+	
+	function imgOver() {
+		this.style.border = "2px solid blue";
+	}
+	
+	function imgOut() {
+		this.style.border = "none";
+	}
+	
+	function clinckSales() {
+		pid = document.querySelector('#ps');
+		if(pid != null) {
+			pid.parentNode.removeChild(pid);
+		}
+		
+		
+		str = [ "5%", "6%", "7%", "8%", "9%", "10%" ];
+		
+		random = Math.floor(Math.random() * str.length);
+		tnode = document.createTextNode("할인율 : " + str[random]);
+		pTag = document.createElement('p');
+		pTag.setAttribute('id', 'ps');
+		pTag.appendChild(tnode);
+		
+		this.appendChild(pTag);
+	}
+	function proc1() {
+		rid = document.getElementById('result1');
+		
+		rid.style.backgroundColor = 'yellow';
+	}
+	
+	function mouseOver() {
+		rid.style.border = "2px solid red";
+	} 
+	
+	function mouserOut() {
+		rid.style.border = "none";
+	}
+	
+	function mouseDown() {
+		btn = document.querySelector('#btn');
+		btn.style.width = "150px";
+		btn.style.fontSize = "1.5em";
+	}
+	
+	function mouseUp() {
+		btn.style.width = "120px";
+		btn.style.fontSize = "0.8em";
+	}
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. 이벤트 mouseover/mouseout</h2>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1" onmouseover="mouseOver()" onmouseout="mouserOut()"></div>
+	</div>
+	<div class="box">
+		<h2>2. 이벤트 mousedown/mouseup</h2>
+		- 확인 버튼을 누르면 : Button의 크기 증가<br>
+		- 누른 버튼을 놓으면 : 원래 크기로 돌아온다<br>
+		<input type="button" id="btn" value="확인" onmousedown="mouseDown()"  onmouseup="mouseUp()">
+		<div id="result2"></div>
+	</div>
+	<div class="box">
+		<div id="result3">
+			<h2>3. 이벤트 mousedown/mouseup</h2>
+			- guess에 대한 일괄 이벤트 등록 - click <br>
+			- img에 대한 일괄 이벤트 등록 - mouseover, mouseout<br>
+			<div class="main">
+				<div class="guess">
+					<img src="../images/컴퓨터1.jpg">
+					<div id="result1"></div>
+				</div>
+
+				<div class="guess" onclick="proc1(this)">
+					<img src="../images/가구1.jpg">
+					<div id="result2"></div>
+				</div>
+
+				<div class="guess" onclick="proc1(this)">
+					<img src="../images/가구2.jpg">
+					<div id="result3"></div>
+				</div>
+
+				<div class="guess" onclick="proc1(this)">
+					<img src="../images/가구3.jpg">
+					<div id="result4"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
