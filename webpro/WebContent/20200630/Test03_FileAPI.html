@@ -9,6 +9,11 @@
 	width : 350px;
 	background : lightblue;
 }
+img {
+	widhth : 150px;
+	height : 150px;
+	display : none;
+}
 </style>
 <script type="text/javascript">
 	function readProc() {
@@ -19,12 +24,36 @@
 		fDate = mDate.toLocaleString();
 		
 		res = "";
-		res += `파일 이름 : ${f.name} \n`;
-		res += `파일 크기 : ${f.size} \n`;
-		res += `파일 유형 : ${f.type} \n`;
-		res += `수정 날짜 : ${fDate} \n`;
+		res += `파일 이름 : ${f.name} <br>`;
+		res += `파일 크기 : ${f.size} <br>`;
+		res += `파일 유형 : ${f.type} <br>`;
+		res += `수정 날짜 : ${fDate} <br>`;
 		
-		document.querySelector('textarea').value = res;
+		document.querySelector('#result1').innerHTML = res;
+		
+		// 선택한 파일의 내용 가져오기
+		reader = new FileReader();
+		
+		if(f.name.match("jpg|gif|png|JPG|PNG|GIF")) {
+			reader.readAsDataURL(f);		// result값은 data:image
+		} else {
+			reader.readAsText(f, "UTF-8");		// result 속성에 저장
+		}
+		
+		// 끝까지 다 읽을 때 까지 기다린다.
+		reader.onload = function() {
+			document.querySelector("textarea").value = reader.result;
+			
+			// 이미지 여부 비교
+			vImg = document.querySelector('#imgview');
+			if(reader.result.match('image')) {
+				// 이미지를 표시
+				vImg.setAttribute('src', reader.result);
+				vImg.style.display = "block";
+			} else {
+				vImg.style.display = "none";
+			}
+		}
 	}
 </script>
 </head>
@@ -34,11 +63,12 @@
 		<h2>1. FileAPI 읽기 / 첨부하기</h2>
 		- 첨부파일 값 가져오기 : files<br>
 		- File 객체를 리턴한다<br>
-		- File 객체에서 정보를 얻는다. 이름name, 수정한 날짜,lastModifiedDate, 크기size, 유형type<br>
+		- File 객체에서 정보를 얻는다. 이름 name, 수정한 날짜 lastModifiedDate, 크기size, 유형type<br>
 		- 첨부된 파일 내용 읽기 : FileReader 객체<br>
 		- 메소드 : readAsText(File 객체, encoding), readAsDateURL(File객체)<br>
-		- 속성 : result - 읽은 파일의 내용을 저장 하는 속성<br>
-			   error - 오류 발생시 오류정보를 저장 하는 속성<br>
+		- 속성<br>
+		- result : 읽은 파일의 내용을 저장 하는 속성<br>
+		- error : 오류 발생시 오류정보를 저장 하는 속성<br>
 		
 		<input type="file" id="file">
 		<br>
@@ -46,6 +76,8 @@
 		<br><br>
 		<textarea rows="10" cols="60"></textarea>
 		<br>
+		- 이미지 파일일 경우에만 이미지를 출력<br>
+		<img id="imgview" src="../images/라이언배경.jpg" alt=""><br>
 		<h2>파일 정보</h2>
 		<div id="result1"></div>
 	</div>
