@@ -18,12 +18,22 @@
 			
 			// $('<p>Hello~~</p>').appendTo('#result1');
 			
-			$("<p onclick='proc1(this)'>Hello~~</p>").appendTo('#result1');
+			$("<p id='aa' class='bb' onclick='proc1(this)'>Hello~~</p>").appendTo('#result1');
+		})
+		$('#btn2').on('click', function() {		
+			a = $('<p></p>', {
+				'id' : 'p2',
+				'class' : 'p2',
+				'text' : "HELLO~",
+				'click' : function() {
+					$(this).css('font-size', '+=5px');
+				}
+			}).appendTo('#result2');
 		})
 	})
 	
 	function proc1(t) {
-		$(t).css('font-size', '+=10');
+		$(t).css('font-size', '+=3px');
 	}
 </script>
 </head>
@@ -39,7 +49,7 @@
 	<div class="box">
 		<h2>2. 새로운 요소 생성</h2>
 		- $("html문장 작성", {속성 및 이벤트)<br>
-		- 확인 버튼 클릭하면 Hello 텍스트를 가진 p태그를 생성해서 result1에 추가 <br>
+		- 확인 버튼 클릭하면 Hello 텍스트를 가진 p태그를 생성해서 result2에 추가 <br>
 		<input type="button" value="확인" id="btn2">
 		<div id="result2"></div>
 	</div>

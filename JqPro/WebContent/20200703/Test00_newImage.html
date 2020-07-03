@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 추가하기</title>
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<style>
+</style>
+<script type="text/javascript">
+	
+	$(function() {
+		$('input[type=button]').on('click', function() {
+			$('<img>', {
+				'src' : '../images/라이언배경.jpg',
+				'alt' : '라이언',
+				'width' : '100px',
+				'height' : '100px',
+				'click' : function() {
+					$(this).css('border', "2px solid red");
+				}
+			}).appendTo('#result1');
+		})
+	})
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1. 이미지 추가하기</h2>
+		<input type="button" value="이미지 추가">
+		<div id="result1"></div>
+	</div>
+</body>
+</html>
