@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery Hide Button</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+input[type=button] {
+	display : none;
+}
+</style>
+<script type="text/javascript">
+	/* $(document).ready(function() {
+		
+	}) */
+	
+	// $()에 전달된 function은 문서가 로드 되면 자동으로  호출 되는 콜백 함수
+	$(function() {		// $(document).ready(function() {}) 와 같은 의미
+		$('.hh3').on('click', function() {
+			$(this).hide();
+			
+			// 보이는 .hh3의 갯수 비교
+			if($('.hh3:visible').length < 1) {
+				// $('input[type=button]').css('display', 'block');
+				$('input[type=button]').show();
+			}
+		})
+		
+		$('input[type=button]').on('click', function() {
+			$('.hh3').show();
+			// $('input[type=butte]').hid();
+			$(this).hide();
+		})
+	});
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2></h2>
+		- 모든 항목이 다 사라지면 버튼이 나타난다<br>
+		- 버튼을 클릭하면 사라진 모든 항목이 다시 표시 된다<br>
+		<input type="button" value="보이기" onclick="">
+		<div id="result1">
+			<h1 class="hh3">클릭하면 사라집니다.1</h1>
+			<h1 class="hh3">클릭하면 사라집니다.2</h1>
+			<h1 class="hh3">클릭하면 사라집니다.3</h1>
+			<h1 class="hh3">클릭하면 사라집니다.4</h1>
+			<h1 class="hh3">클릭하면 사라집니다.5</h1>
+		</div>
+	</div>
+</body>
+</html>

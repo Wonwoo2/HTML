@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript & JQuery</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+</style>
+
+<script type="text/javascript">
+	// ;
+	window.onload = function() {
+		res = document.getElementById('result1');
+		res.innerHTML = "HELLO!!";
+		res.style.color = "red";
+		res.style.fontSize = "2.0em";
+	}
+	
+	$(document).ready(function(){
+		vres = $('#result2');
+		// vres = jquery('#result2')
+		
+		vres.html("hello");
+		
+		// css 단일로 사용할 때는 ('key값', 'value값')
+		// vres.css('color', 'red').css("font-size", "2.0em");
+		
+		// 여러 css를 사용할 때 {} 중괄호를 사용한다.
+		// {"key값" : "value값", "key값" : "value값" '}
+		vres.css({ "color" : "red", "font-size" : "2.0em" });
+		
+	})
+	
+	
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>JavaScript 실행</h2>
+			res = document.getElementById('result1');<br>
+			res.innerHTML = "HELLO!!";<br>
+			res.style.color = "red";<br>
+			res.style.fontSize = "2.0em";<br>
+		<div id="result1"></div>
+	</div>
+	
+	<div class="box">
+		<h2>JQuery 실행 </h2>
+			jquery(document).ready(function(){ <br>
+			vres = $('#result1');<br>
+		
+			vres.html("hello");<br>
+		
+			css 단일로 사용할 때는 ('key값', 'value값')<br>
+			vres.css('color', 'red').css("font-size", "2.0em");<br>
+		
+			여러 css를 사용할 때 {} 중괄호를 사용한다.<br>
+			{"key값" : "value값", "key값" : "value값" '}<br>
+			vres.css({ "color" : "red", "font-size" : "2.0em" })<br>		
+			})<br>
+		<div id="result2"></div>
+	</div>
+</body>
+</html>

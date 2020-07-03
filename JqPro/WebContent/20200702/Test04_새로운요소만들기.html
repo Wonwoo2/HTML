@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>새로운 요소 생성</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('#btn1').on('click', function() {
+			/* ptag = document.createElement('p');
+			txt = document.createTextNode('Hello~~');
+			
+			ptag.appendChild(txt);
+			document.querySelector('#result1').appendChild(ptag); */
+			
+			// $('<p>Hello~~</p>').appendTo('#result1');
+			
+			$("<p onclick='proc1(this)'>Hello~~</p>").appendTo('#result1');
+		})
+	})
+	
+	function proc1(t) {
+		$(t).css('font-size', '+=10');
+	}
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1. 새로운 요소 생성</h2>
+		- $("html문장 작성")<br>
+		- 확인 버튼 클릭하면 Hello 텍스트를 가진 p태그를 생성해서 result1에 추가 <br>
+		<input type="button" value="확인" id="btn1">
+		<div id="result1"></div>
+	</div>
+	
+	<div class="box">
+		<h2>2. 새로운 요소 생성</h2>
+		- $("html문장 작성", {속성 및 이벤트)<br>
+		- 확인 버튼 클릭하면 Hello 텍스트를 가진 p태그를 생성해서 result1에 추가 <br>
+		<input type="button" value="확인" id="btn2">
+		<div id="result2"></div>
+	</div>
+</body>
+</html>
