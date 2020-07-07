@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>필터 hidden/visible</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+#p2{
+	visibility:hidden;
+}
+#p3{
+	display:none;
+}
+#p4{
+	opacity: 0;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('#butvisi').on('click', function() {
+			res = "";
+			$('p:visible').each(function() {
+				pid = $(this).attr('id');
+				ptext = $(this).text();
+				
+				res += `id : ${pid} text : ${ptext} <br>`
+			});
+			
+			$('#result1 div#visib').html(res);
+		});
+		
+		$('#buthid').on('click', function() {
+			res = "";
+			$('p:hidden').each(function() {
+				pid = $(this).attr('id');
+				ptext = $(this).text();
+				
+				res += `id : ${pid} text : ${ptext} <br>`
+			});
+			
+			$('#result1 #hid').html(res);
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. 필터 : hidden/visible</h2>
+		<input id="butvisi" type="button" value="visible">
+		<input id="buthid" type="button" value="hidden">
+		
+		<div id="result1">
+			<p id="p1">보이는 문단</p>
+			<p id="p2">숨겨진 문단</p>
+			<p id="p3">자리를 차지 하지 못한 문단</p>
+			<p id="p4">투명한 문단</p>
+			<hr />
+			<div id="visib"></div>
+			<div id="hid"></div>
+		</div>
+		
+	</div>
+</body>
+</html>

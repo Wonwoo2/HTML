@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>메소드Val</title>
+<link rel="stylesheet" href="../css/mycss.css">
+<script src="../js/jquery-3.5.1.min.js"></script>
+
+<script>
+
+$(function(){
+	$('#btnview').on('click', function(){
+		res = "";
+		//값을 가져온다 
+		/* name = $('#user').val();
+		gend = $('#gend').val();
+		res += `이름 : ${name} <br>`;
+		res += `성별 : ${gend} <br>`;
+		 */
+		a = $('#intro').val();
+		a = a.replace(/\r/g, "").replace(/\n/g,"<br>");	 
+		res += `이름 : ${ $('#user').val() } <br>`;
+		res += `성별 : ${ $('#gend:checked').val() } <br>`;
+		res += `소개 : <br> ${a} <br>`;
+		res += `직업 : ${ $('#work option:selected').val() }`;
+
+		$('#result1 div').html(res);
+	})
+
+	$('#btnchange').on('click', function(){
+		//이름을 입력받는다 -prompt 
+		name = prompt("이름입력 ");
+		
+		//user의 text값을 변경한다 
+		$('#user').val(name);
+	})
+})
+
+</script>
+<style>
+</style>
+</head>
+<body>
+
+	<div class="box">
+
+		<h2>1. 메소드 : val()</h2>
+		input, textarea, select 의 입력하거나 또는 선택한 값을 가져온다<br>
+		<div id="result1">
+			<form>
+				<label for="user">이름</label> 
+				<input type="text" id="user" value="korea"><br> 
+				<label>성별</label> 
+				<input type="radio" id="gend" name="gend" value="남자" checked>남자 
+				<input type="radio" id="gend" name="gend" value="여자">여자<br>
+				<label for="intro">소개</label> <br>
+				<textarea id="intro" cols="40" rows="4"></textarea>
+				<br> 
+				<label for="work">직업</label> 
+				<select id="work">
+					<option value="programmer">프로그래머</option>
+					<option value="progammer">프로게이머</option>
+					<option value="whitehand">백수</option>
+				</select><br>
+				<button type="button" id="btnview">조사하기</button>
+				<button type="button" id="btnchange">이름변경</button>
+			</form>
+			<div></div>
+		</div>
+	</div>
+</body>
+</html>
