@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>img 추가</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+img {
+	width : 100px;
+	height : 100px;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('.pp').on('click', function() {
+			vImg1 = $(this).attr('title');
+			vImg2 = $(this).text();
+			
+			// $('<img src="" width="100px" height="100px">').appendTo(this);
+			$('<img>', {
+				'id' : 'res1Img',
+				'src' : '../images/' + vImg1 + '.jpg',
+				'width' : '100px',
+				'height' : '100px'
+			}).appendTo(this);					// insertBefore(this);
+		})
+		
+		$('#start').on('click', function() {
+			a = setInterval(function() {
+				$('.im:first').appendTo('#result2');
+			}, 500);
+			
+			// 시작버튼을 사용 불가능 / 안보이게 한다
+			// $(this).css('display', 'none');
+			// $(this).hide();
+			$(this).attr('disabled', true);
+		})
+		
+		$('#stop').on('click', function() {
+			clearInterval(a);
+			// 시작버튼을 사용 가능 / 보이게 한다
+			$('#start').attr('disabled', false);
+		})
+		
+	})
+	
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. 이미지 추가</h2>
+		<div id="result1">
+			<p class="pp" title="Tulips">튜울립</p>
+			<p class="pp" title="Chrysanthemum">국화</p>
+			<p class="pp" title="Koala">코알라</p>
+			<p class="pp" title="Hydrangeas">수국</p>
+		</div>
+	</div>
+	
+	<div class="box">
+		<h2>2. 이미지 회전</h2>
+		- 시작 버튼을 클릭하면 0.5초가 지날 때마다 첫번째 이미지를 선택해서 맨 뒤에 추가한다. <br>
+		<input id="start" type="button" value="시작">
+		<input id="stop" type="button" value="종료">
+		<div id="result2">
+			<img class="im" src="../images/Koala.jpg">
+			<img class="im" src="../images/라이언배경.jpg">
+			<img class="im" src="../images/가구1.jpg">
+			<img class="im" src="../images/가구2.jpg">
+			<img class="im" src="../images/가구3.jpg">
+		</div>
+	</div>
+</body>
+</html>

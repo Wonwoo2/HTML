@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>찾기메소드</title>
+<style>
+.ancestors * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+.ancestors input[type=button] {
+	display : inline;
+	color : black;
+	background : orange;
+	padding: 5px;
+  	margin: 5px;
+  	width : 150px;
+  	height : 40px;
+}
+.ancestors p {
+	font-size : 1.5em;
+	color : black;
+	border : none;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$('#prt').on('click', function() {
+			$("#d1 span").parent().css({"color": "red", "border": "2px solid red"});
+		});
+		
+		$('#prts').on('click', function() {
+			$("#d1 span").parents().css({"color": "lightblue", "border": "2px solid lightblue"});
+		});
+		
+		$('#prts_sel').on('click', function() {
+			$("#d1 span").parents("ul").css({"color": "blue", "border": "2px solid blue"});
+		});
+		
+		$('#prts_unt').on('click', function() {
+			$("#d1 span").parentsUntil("#d1").css({"color": "orange", "border": "2px solid orange"});
+		});
+		
+		$('#find').on('click', function() {
+			$('#d2').find('span').css({'color' : 'blue', 'border' : '2px solid blue'});
+		});
+	});
+</script>
+</head>
+
+<body class="ancestors">body (great-grandparent)
+	<p>span을 기준으로 부모/조상 찾기</p>
+	<div id="d1" style="width: 500px;">
+		div (grandparent)
+		<ul>
+			ul (direct parent)
+			<li>li (child) <span>span (grandchild)</span>
+			</li>
+		</ul>
+	</div>
+	<input id="prt" type="button" value="parent">
+  	<input id="prts" type="button" value="parents">
+ 	<input id="prts_sel" type="button" value="parents_sel">
+  	<input id="prts_unt" type="button" value="parents_unt">
+  	
+  	<hr>
+  	<p>#d2를 기준으로 자식/후손 찾기</p>
+  	- $('#d2').find('span').css({'color' : 'blue', 'border' : '2px solid blue'});<br>
+	<div id="d2" style="width: 500px;">
+		div (grandparent)
+		<ul>
+			ul (direct parent)
+			<li>li (child) 
+				<span>span (grandchild)</span>
+			</li>
+		</ul>
+	</div>
+	<input id="find" type="button" value="find">
+</body>
+
+</html>

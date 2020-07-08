@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>복사하기(clone/clone(true))</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('.pp').on('click', function() {
+			$(this).css('font-size', '+=5px');
+		})
+		
+		$('input[value=clone]').on('click', function() {
+			// $('#p1').clone().appendTo('#result2');
+			$('#result2').append($('#p1').clone());
+		})
+		
+		$('input[value=clonetrue]').on('click', function() {
+			// $('#p1').clone(true).appendTo('#result2');
+			$('#result2').append($('#p2').clone(true));
+		})
+	})
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1. 복사하기(clone/clone(true))</h2>
+		- clone : 요소를 복사한다<br>
+		- clone(true) : 요소를 복사한다(이벤트도 함께 복사한다)<br>
+		<input type="button" value="clone">
+		<input type="button" value="clonetrue">
+		<p id="p1" class="pp">무궁화 꽃이 피었습니다.</p>
+		<p id="p2" class="pp">수국이 만발하였습니다. 보라, 빨강, 분홍</p>
+		<div id="result1"></div>
+		<div id="result2"></div>
+	</div>
+	
+</body>
+</html>
