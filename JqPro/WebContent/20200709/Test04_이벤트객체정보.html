@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 객체 정보</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+.box div#result1 {
+	width : 350px;
+	height : 300px;
+	background : yellow;
+}
+.box div#result2 {
+	width : 350px;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('#result1').on('mousedown', info);
+		
+		$('#btn1').on('mousedown', info);
+		
+		function info() {
+			eTarget = event.target;
+			ePageX = event.pageX;
+			ePageY = event.pageY;
+			eScreenX = event.screenX;
+			eScreenY = event.screenY;
+			eBtn = event.button;
+			eCtr = event.ctrlKey;
+			
+			res = `대상 : ${eTarget}<br>`;
+			res += `스크린 좌표 : (${eScreenX}, ${eScreenY})<br>`;
+			res += `페이지 좌표 : (${ePageX}, ${ePageY})<br>`;
+			res += `버튼 : ${eBtn}<br>`;
+			res += `컨트롤 : ${eCtr}<br>`;
+			
+			$('#result2').html(res);
+			
+			// 마우스 오른쪽 버튼 : 테두리 변경
+			// 마우스 왼쪽 버튼 : 배경색 변경
+			// 마우스 가운데 휠 버튼 : 글자색 변경
+			
+			if(eBtn == 0) {
+				$(this).css('background', 'orange');
+			} else if(eBtn == 1) {
+				$(this).css('color', 'lightblue');
+			} else {
+				$(this).css('border', 'red');
+			}
+		}
+	})
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>1. 이벤트 객체 정보</h2>
+		- 확인버튼이나 div요소를 mousedown시<br> 
+		- 마우스 오른쪽 버튼 : 테두리 변경<br> 
+		- 마우스 왼쪽 버튼 : 배경색 변경<br>
+		- 마우스 가운데 휠 버튼 : 글자색 변경<br>
+		<input id="btn1" type="button" value="확인">
+		<div id="result1">Hello</div>
+		<div id="result2"></div>
+	</div>
+</body>
+</html>

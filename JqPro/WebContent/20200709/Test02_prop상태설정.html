@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>prop상태 설정</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('#runBtn').on('click', function() {
+			alert("실행");
+		})
+		
+		$('#btn1').on('click', function() {
+			chk = $('#checkTest').prop('checked');
+			sel = $('#selTest option:eq(0)').prop('selected');
+			txt = $('#txtTest').prop('readonly');
+			btn = $('#runBtn').prop('disabled');
+			
+			res = `chk(checked) = ${chk}<br> sel(selected) = ${sel}<br> txt(readonly) = ${txt}<br> btn(disabled) = ${btn}<br>`;
+			
+			$('#result2').html(res);
+		})
+		
+		$('#btn2').on('click', function() {
+			// 변경 버튼을 클릭할 때마다 상태를 바꾼다
+			chk = $('#checkTest').prop('checked');
+			sel = $('#selTest option:eq(2)').prop('selected');
+			txt = $('#txtTest').prop('readonly');
+			btn = $('#runBtn').prop('disabled');
+			
+			/* if(chk) {
+				$('#checkTest').prop('checked', false);
+			} else {
+				$('#checkTest').prop('checked', true);
+			}
+			
+			if(sel) {
+				$('#selTest option:eq(0)').prop('selected', false);
+			} else {
+				$('#selTest option:eq(0)').prop('selected', true);
+			}
+			
+			if(txt) {
+				$('#txtTest').prop('readonly', false);
+			} else {
+				$('#txtTest').prop('readonly', true);
+			}
+			
+			if(btn) {
+				$('#runBtn').prop('disabled', false);
+			} else {
+				$('#runBtn').prop('disabled', true);
+			} */
+			$('#checkTest').prop('checked', !chk);
+			$('#selTest option:eq(2)').prop('selected', !sel);
+			$('#txtTest').prop('readonly', !txt);
+			$('#runBtn').prop('disabled', !btn);
+			
+		})
+		
+		
+		
+		$('#runBtn2').on('click', function() {
+			alert("실행");
+		})
+		
+		$('#chkAll').on('click', function() {
+			
+			chkAll = $(this).prop('checked');
+			$('.chk').prop('checked', chkAll);
+			
+		})
+	})
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. prop상태 설정</h2>
+		- prop() : 상태 값을 설정하거나 가져오기(checked, selected, disabled, readonly, multiple)<br>
+		- setter(설정)<br>
+		- $(selector).prop("속성명", 값);<br>
+        	==> 값이 true이면 해당 속성을 설정하는 것이고 값이 false이면 해당 속성을 해제하는 것이다.<br>
+		- getter(설정)<br>
+		- $(selector).prop("속성명");<br>
+       		==> 해당 속성이 설정되어 있으면 true, 설정되어 있지 않으면 false를 반환한다<br>
+		
+		
+		<input id="btn1" type="button" value="확인">
+		<input id="btn2" type="button" value="변경">
+		
+		<div id="result1">
+			<form>
+				체크박스(라디오버튼) : 
+				<input type="checkbox" id="checkTest" checked><br><br>
+				리스트박스(select객체) : 
+ 				<select id="selTest">
+					<option value="1">하나</option>
+					<option value="2">둘</option>
+					<option value="3" selected>셋</option>  
+					<option value="4">넷</option>
+				</select><br><br> 
+				text객체 (readonly) : 
+				<input type="text" value="가나다" id="txtTest"><br><br> 
+				button객체(disabled) : 
+				<input type="button" value="실행" id="runBtn">
+			</form>
+			<div id="result2"></div>
+		</div>
+	</div>
+	
+	<div class="box">
+		<h2>2. prop상태 설정</h2>
+		
+		<div id="result5">
+			체크박스(라디오버튼) : 
+			<input type="checkbox" id="chkAll" checked>전체선택
+			<input type="checkbox" class="chk" checked>1
+			<input type="checkbox" class="chk" checked>2
+			<input type="checkbox" class="chk" checked>3
+			<input type="checkbox" class="chk" checked>4
+		</div>
+	</div>
+</body>
+</html>
