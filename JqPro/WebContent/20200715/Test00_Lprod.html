@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lproduct</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+</style>
+<script type="text/javascript">
+	$(function() {
+		xhr = new XMLHttpRequest();
+		
+		$('#lprodText').click(function() {
+			xhr.open("get", "Test01_LprodText.jsp", true);
+			xhr.send();
+			
+			xhr.onreadystatechange = function() {
+				// console.log('state = ' + this.readyState);
+				if(this.readyState == 4 && this.status == 200) {
+					res = this.responseText;
+					res = res.split(",");
+				
+					code = "<ul>"
+					$.each(res, function(i) {
+						code += "<li>" + res[i] + "</li>";
+					});
+					code += "</ul>"
+					
+					$('#result1').html(code);
+				}
+			}
+		});
+		
+		$('#lprodJson').click(function() {
+			xhr.open("get", "Test02_LprodJson.jsp", true);
+			xhr.send();
+			
+			xhr.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText);
+					
+					code = "<ol>";
+					$.each(res, function(i) {
+						code += "<li>" + res[i] + "</li>";
+					});
+					code += "</ol>";
+					
+					$('#result2').html(code);
+				}
+			}
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>Lprod</h2>
+		<input id="lprodText" type="button" value="textData">
+		<input id="lprodJson" type="button" value="jsonData">
+		<div id="result1"></div>
+		<div id="result2"></div>
+	</div>
+</body>
+</html>

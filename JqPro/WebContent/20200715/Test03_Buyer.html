@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Buyer</title>
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<script src="../JS/jquery-3.5.1.min.js"></script>
+<style>
+table{
+	border-collapse: collapse;
+}
+td{
+	width : 200px;
+	background: white;
+	text-align: center;
+}
+.col{
+	background: lightblue;
+}
+#details{
+	width : 500px;
+	height: auto;
+}
+#names p{
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		xhr = new XMLHttpRequest();
+		
+		$('#buyerBtn').on('click', function() {
+			xhr.open("get", "Test04_BuyerName.jsp");
+			xhr.send();
+			
+			
+			xhr.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText);
+					code = "";
+					$.each(res, function(i) {
+						code += "<p id='" + res[i].id + "'> " + res[i].name + "</p>";
+					});
+					
+					$('#names').html(code);
+				}
+			}
+		});
+		
+		// bind 방식은 기존에 있었던 것만 작동
+		// $('p').on('click', function() { })
+		
+		// delegate 방식은 동적으로 작동
+		$('#names').on('click', 'p', function() {
+			idValue = $(this).attr('id');
+			
+			// 요청
+			xhr.open("post", "Test05_Detail.jsp", true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			
+			xhr.send("id=" + idValue);
+			
+			// 응답
+			xhr.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText);
+					code = "<table>";
+					
+					code += "<tr><td>BUYER_ID</td>";
+					code += "<td>" + res.id + "</td></tr>";
+					
+					code += "<tr><td>BUYER_NAME</td>";
+					code += "<td>" + res.name + "</td></tr>";
+					
+					code += "<tr><td>BUYER_LGU</td>";
+					code += "<td>" + res.lgu + "</td></tr>";
+					
+					code += "<tr><td>BUYER_BANK</td>";
+					code += "<td>" + res.bank + "</td></tr>";
+					
+					code += "<tr><td>BUYER_BANKNO</td>";
+					code += "<td>" + res.bankno + "</td></tr>";	
+					
+					code += "<tr><td>BUYER_BANKNAME</td>";
+					code += "<td>" + res.bankname + "</td></tr>";
+					
+					code += "<tr><td>BUYER_ZIP</td>";
+					code += "<td>" + res.zip + "</td></tr>";
+					
+					code += "<tr><td>BUYER_ADD1</td>";
+					code += "<td>" + res.add1 + "</td></tr>";
+					
+					code += "<tr><td>BUYER_ADD2</td>";
+					code += "<td>" + res.add2 + "</td></tr>";
+					
+					code += "<tr><td>BUYER_COMTEL</td>";
+					code += "<td>" + res.comtel + "</td></tr>";
+					
+					code += "<tr><td>BUYER_MAIL</td>";
+					code += "<td>" + res.mail + "</td></tr>";
+					
+					code += "</table>";
+					
+					$('#detail').html(code);
+				}
+			}
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>Buyer</h2>
+		<input id="buyerBtn" type="button" value="BuyerList">
+		<div id="result1">
+			<table border="1">
+				<tr>
+					<td class="col">거래이름</td>
+					<td class="col">거래처 상세정보</td>
+				</tr>
+				<tr>
+					<td id="names"></td>
+					<td id="detail"></td>
+				</tr>
+			</table>
+		
+		</div>
+	</div>
+</body>
+</html>
