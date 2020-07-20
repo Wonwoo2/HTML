@@ -10,6 +10,12 @@
 <script type="text/javascript">
 	$(function() {
 		$('#txt').on('click', function() {
+			
+			// 단축메뉴의 get방식
+			/* $.get('Test01_Text.jsp', function() {
+				
+			}, 'text'); */
+			
 			$.ajax({
 				url : 'Test01_Text.jsp',
 				method : 'get',
@@ -30,6 +36,10 @@
 		});
 		
 		$('#jsonArr').on('click', function() {
+			
+			/* $.get('Test02_JsonArr.jsp', function() {
+				
+			}, 'json'); */
 			$.ajax({
 				url : 'Test02_JsonArr.jsp',
 				method : 'get',
@@ -49,6 +59,10 @@
 		
 		$('#json').on('click', function() {
 			idValue = prompt("찾을 아이디를 입력하세요.");
+			
+			/* $.getJSON('Test03_Json.jsp', 'id=' + idValue, function() {
+				
+			}); */
 			
 			$.ajax({
 				url : 'Test03_Json.jsp',

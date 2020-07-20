@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>lprod, prod</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<link rel="stylesheet" href="../CSS/myCSS.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+</style>
+<script type="text/javascript">
+	$(function() {
+		// $.getJSON(url, data, success)
+		
+		$.getJSON("/JqPro/LprodServlet", function(res) {
+			code = "";
+			$.each(res, function(i) {
+				code += "<option value='" + res[i].gu +  "'>" + res[i].name + "</option>";
+			});
+			
+			$('#lprod').html(code);
+		});
+		
+		// lprod를 선택하면 option value 값인 lprod_gu를 서버로 보내 결과를 얻는다.
+		$('#lprod').on('click', function() {
+			optionValue = $(this).val();
+			
+			$.ajax({
+				url : '/JqPro/ProdServlet.do',
+				data : { 'gu' : optionValue }, // data : 'gu=' + optionValue
+				type : 'get',
+				dataType : 'json',
+				error : function(xhr) {
+					alert("상태 : " + xhr.status);	// 404, 500, 200
+				},
+				success : function(res) {
+					code = "";
+					$('#prod').empty();
+					$('#list').empty();
+					/* $.each(res, function(i) {
+						code += $("<option></option", {
+							"value" : res[i].id,
+							"text" : res[i].name
+						}).appendTo('#prod');
+					}); */
+					
+					if(res.listData == "yes") {
+						$.each(res.data, function(i) {
+							code += $("<option></option", {
+								"value" : res.data[i].id,
+								"text" : res.data[i].name
+							}).appendTo('#prod');
+						});
+					} else {
+						code += $("<option></option", {
+							"value" : '0',
+							"text" : '데이터 없음'
+						}).appendTo('#prod');
+						
+						$('<img>', {
+							'src' : '../images/라이언배경.jpg',
+							'width' : '150px',
+							'height' : '100px'
+						}).appendTo('#list');
+					}
+				}
+			});
+		});
+		
+		// prod를 선택하면 option value 값인 prod_id를 서버로 보내서 결과를 얻는다.
+		$('#prod').on('click', function() {
+			optionValue = $(this).val();
+			
+			$.ajax({
+				url : '/JqPro/ProdServlet.do',
+				type : 'post',
+				data : { 'id' : optionValue },
+				dataType : 'json',
+				error : function(xhr) {
+					alert("상태 : " + xhr.status);
+				},
+				
+				success : function(res) {
+					$('#list').empty();
+					code = "<table class='table table-bordered' border='1'>";
+					
+					code += "<tr><td>항목</td>";
+					code += "<td>내용</td></tr>";
+					
+					code += "<tr><td>PROD_ID</td>";
+					code += "<td>" + res.id + "</td></tr>";
+					
+					code += "<tr><td>PROD_NAME</td>";
+					code += "<td>" + res.name + "</td></tr>";
+					
+					code += "<tr><td>PROD_LGU</td>";
+					code += "<td>" + res.lgu + "</td></tr>";
+					
+					code += "<tr><td>PROD_BUYER</td>";
+					code += "<td>" + res.buyer + "</td></tr>";
+					
+					code += "<tr><td>PROD_COST</td>";
+					code += "<td>" + res.cost + "</td></tr>";
+					
+					code += "<tr><td>PROD_PRICE</td>";
+					code += "<td>" + res.price + "</td></tr>";
+					
+					code += "<tr><td>PROD_SALE</td>";
+					code += "<td>" + res.sale + "</td></tr>";
+					
+					code += "<tr><td>PROD_SIZE</td>";
+					code += "<td>" + res.size + "</td></tr>";
+					
+					code += "</table>";
+					
+					$('#list').html(code);
+				}
+			})
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2>1. 제품분류 리스트(lprod, prod 테이블)</h2>
+		- 첫 번째 SELECT에는 lprod의 제품목록 출력 : lprod_gu, lprod_nm<br>
+		- 두 번째 SELECT에는 lprod의 gu컬럼 값과 일치하는 prod 제품목록을 출력 prod_id, prod_name<br>
+		- 두 번째 SELECT에서 가져온 제품목록 중 하나를 선택하면 prod_id를 파라미터로 하는 제품 상세보기<br>
+		<div id="result1">
+			<!-- <select id=lprod>
+			</select>
+			<select id=prod>
+			</select> -->
+
+			<div class="form-group">
+				<label for="lprod">lprod 제품 목록</label> 
+				<select class="form-control" id="lprod">
+				</select> <br>
+				<label for="prod">prod 제품 목록</label> 
+				<select class="form-control" id="prod">
+				</select> <br>
+			</div>
+			<div id="list"></div>
+		</div>
+	</div>
+		
+</body>
+</html>

@@ -21,7 +21,9 @@
 	 -->	
 	<typeAlias alias="mv" type="kr.or.ddit.member.vo.MemberVO"/>
 	<typeAlias alias="lpv" type="kr.or.ddit.lprod.vo.LprodVO"/>
+	<typeAlias alias="pv" type="kr.or.ddit.prod.vo.ProdVO"/>
 	<typeAlias alias="bv" type="kr.or.ddit.buyer.vo.BuyerVO"/>
+	
 
 	<!-- 
 	DB와의 연결을 처리하는 부분
@@ -59,6 +61,7 @@
 	<sqlMap resource="kr/or/ddit/ibatis/mapper/member.xml"/>
 	<sqlMap resource="kr/or/ddit/ibatis/mapper/lprod.xml"/>
 	<sqlMap resource="kr/or/ddit/ibatis/mapper/buyer.xml"/>
+	<sqlMap resource="kr/or/ddit/ibatis/mapper/prod.xml"/>
 	
 </sqlMapConfig>
 
