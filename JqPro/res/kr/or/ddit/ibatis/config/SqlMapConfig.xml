@@ -20,6 +20,7 @@
 	형식) <typeAlias alias="alias명" type="클래스의 풀네임"/>
 	 -->	
 	<typeAlias alias="mv" type="kr.or.ddit.member.vo.MemberVO"/>
+	<typeAlias alias="zv" type="kr.or.ddit.member.vo.ZipVO"/>
 	<typeAlias alias="lpv" type="kr.or.ddit.lprod.vo.LprodVO"/>
 	<typeAlias alias="pv" type="kr.or.ddit.prod.vo.ProdVO"/>
 	<typeAlias alias="bv" type="kr.or.ddit.buyer.vo.BuyerVO"/>

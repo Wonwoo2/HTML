@@ -29,10 +29,30 @@
 	SELECT * FROM member2
 </select>
 
-<select id="getMember" resultClass="mv">
-	SELECT * FROM member2 
+<!-- 아이디 중복 검사 -->
+<select id="getMemberID" parameterClass="String" resultClass="String">
+	SELECT mem_id FROM member2 
 	WHERE mem_id = #mem_id#
 </select>
+
+<insert id="insertMember" parameterClass="mv">
+	INSERT INTO member2(mem_id, mem_pass, mem_name, mem_zip, mem_add1, mem_add2, mem_hp, mem_mail)
+	VALUES(#mem_id#, #mem_pass#, #mem_name#, #mem_zip#, #mem_add1#, #mem_add2#, #mem_hp#, #mem_mail#)
+	
+	<!-- 저장한 데이터 중 유일한 id 값을 리턴 -->
+	<!-- insert 완료 후 queryForObject실행으로 결과를 리턴한다. -->
+	<selectKey keyProperty="mem_id" resultClass="String">
+		SELECT mem_id FROM member2
+		WHERE mem_id = #mem_id#
+	</selectKey>
+</insert>
+
+<!-- 우편번호 검색 -->
+<select id="getZipCode" parameterClass="String" resultClass="zv">
+	SELECT * FROM ziptb 
+	WHERE dong LIKE '%' || #dong# || '%'
+</select>
+
 
 
 </sqlMap>
